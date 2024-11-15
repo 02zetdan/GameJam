@@ -25,6 +25,10 @@ public class CountdownTimer : MonoBehaviour
         {
             currentTime = 0;
         }
+        if (currentTime <= 30)
+        {
+            cdtext.color = Color.red;
+        }
         cdtext.text = currentTime.ToString("F0");
     }
 }

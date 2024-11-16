@@ -32,7 +32,7 @@ public class AudioManager : MonoBehaviour
     }
     private void Start()
     {
-        Play("Background music");
+        Play("Background Music");
     }
     private Sound FindSound(string name)
     {

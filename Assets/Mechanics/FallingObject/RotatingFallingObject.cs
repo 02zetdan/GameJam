@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class RotatingFallingObject : MonoBehaviour
 {
-    public float rotationSpeed = 100f; // Speed of rotation in degrees per second
+    public float rotationSpeed; // Speed of rotation in degrees per second
     public float fallSpeed = 2f;       // Speed of falling
     private bool hasLanded = false;   // Flag to check if the square has landed
     private Rigidbody2D rb;
@@ -14,6 +14,7 @@ public class RotatingFallingObject : MonoBehaviour
     // Start is called before the first frame update
     private void Awake()
     {
+        rotationSpeed = 300f;
         rb = GetComponent<Rigidbody2D>();
         force = new Vector2(6f, 2);
     }

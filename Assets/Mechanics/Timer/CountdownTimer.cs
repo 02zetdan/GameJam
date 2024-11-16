@@ -29,7 +29,7 @@ public class CountdownTimer : MonoBehaviour
             currentTime = 0;
             OnTimerEnd();
         }
-        if (currentTime <= 30)
+        if (currentTime <= 60)
         {
             cdtext.color = Color.red;
         }
@@ -43,4 +43,9 @@ public class CountdownTimer : MonoBehaviour
         endResultManager.GetComponent<EndResultManager>().showWinner();
         enabled = false;
     }
-}
+    private void OnTriggerIntense()
+    {
+
+        FindObjectOfType<AudioManager>().Stop("Background Music");
+        FindObjectOfType<AudioManager>().Play("Background Music");
+    }

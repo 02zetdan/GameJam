@@ -5,7 +5,7 @@ using UnityEngine;
 public class spawnerSystemScript : MonoBehaviour
 {
     List<GameObject> spawners = new List<GameObject>();
-    float spawnTimer = 0, timeToNextSpawn = 10;
+    float spawnTimer = 0, timeToNextSpawn = 2;
     int 
         minSpawnTime = 2,
         maxSpawnTime = 4;
@@ -31,6 +31,7 @@ public class spawnerSystemScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        spawnTimer += Time.deltaTime;
         if (spawnTimer > timeToNextSpawn) 
         { 
             callSpawn();
@@ -38,6 +39,6 @@ public class spawnerSystemScript : MonoBehaviour
             timeToNextSpawn = Random.Range(minSpawnTime, maxSpawnTime);
         }
 
-        spawnTimer += Time.deltaTime;
+        
     }
 }

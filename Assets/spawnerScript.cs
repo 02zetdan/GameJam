@@ -28,10 +28,10 @@ public class spawnerScript : MonoBehaviour
         int direction = Random.Range(0, 1);
         Vector2 start_vel;
         start_vel = new Vector2((1 - (2 * direction)) * Random.Range(min_x, max_x), Random.Range(min_y, max_y));
-        ingridientPrefab = Instantiate(ingridientPrefab, transform.position, Quaternion.identity);
+        GameObject ingridient = Instantiate(ingridientPrefab, transform.position, Quaternion.identity);
         Rigidbody2D rb;
 
-        rb = ingridientPrefab.GetComponent<Rigidbody2D>();
+        rb = ingridient.GetComponent<Rigidbody2D>();
         rb.velocity = start_vel;
     }
 }

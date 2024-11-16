@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using System;
 
 public class IngridentScript : MonoBehaviour
 {
@@ -23,13 +24,15 @@ public class IngridentScript : MonoBehaviour
 
     private float despawnTimer= 0, timeToDespawn = 5;
 
-    private float blinkTimer = 0, timeToBlink = 0.7f;
+    private float blinkTimer = 0, orgTimeToBlink = 0.5f, timeToBlink, startBlinkingFactor = 0.7f;
+   
 
     public IngridientType ingridientType = IngridientType.carrot;
     private SpriteRenderer sprite;
     // Start is called before the first frame update
     void Start()
     {
+        timeToBlink = orgTimeToBlink;
         sprite = GetComponent<SpriteRenderer>();
     }
 
@@ -37,18 +40,31 @@ public class IngridentScript : MonoBehaviour
     void Update()
     {
         despawnTimer += Time.deltaTime;
+        blinkTimer += Time.deltaTime;
         if (despawnTimer > timeToDespawn)
         {
-            Destroy(gameObject);
+            RemoveMe();
             despawnTimer = 0;
         }
 
-        if (blinkTimer > timeToBlink && despawnTimer < )
+        if (blinkTimer > timeToBlink && despawnTimer > timeToDespawn*startBlinkingFactor)
         {
             sprite.enabled = !sprite.enabled;
             blinkTimer = 0;
+            timeToBlink = orgTimeToBlink*(float)Math.Pow(despawnTimer/(timeToDespawn), 3);
         }
+       
 
-        
+    }
+
+    public string getIngridientTypeString()
+    {
+        return nameof(IngridientType);
+    }
+
+    public void RemoveMe()
+    {
+        //Allows for some animation and stuff if we want
+        Destroy(gameObject);
     }
 }

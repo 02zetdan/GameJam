@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3680621013055568092}
   - component: {fileID: 9137266409422386051}
   - component: {fileID: 5096905482866386967}
+  - component: {fileID: 5893323866730236674}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -34,7 +35,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8399606653979277120
 MonoBehaviour:
@@ -53,9 +54,14 @@ MonoBehaviour:
   movementSpeed: 5
   moveInput: 0
   isGrounded: 1
+  isFacingLeft: 1
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  softBlockMask:
+    serializedVersion: 2
+    m_Bits: 64
+  teamNum: 0
 --- !u!114 &8565416717933179289
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -111,7 +117,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: ec89bdd10f2b89141956a6e4d71c6366, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 0d81099e7531cf84298144631eda4aeb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -194,3 +200,19 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 2}
   m_EdgeRadius: 0
+--- !u!114 &5893323866730236674
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398626400227949951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7613375df1f9ad34cb8c70a28e253844, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ingredientLayer:
+    serializedVersion: 2
+    m_Bits: 0
+  pmScript: {fileID: 0}

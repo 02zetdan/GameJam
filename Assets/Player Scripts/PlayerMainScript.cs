@@ -11,17 +11,28 @@ public class PlayerMainScript : MonoBehaviour
         jumpForce = 5f,
         movementSpeed = 5f,
         moveInput = 0;
-    public bool isGrounded = false;
-    public LayerMask groundMask;
+
+    public bool 
+        isGrounded = false,
+        isFacingLeft = true;
+    public LayerMask 
+        groundMask,
+        softBlockMask,
+        emptyMask;
+    BoxCollider2D hb;
+
+    public int teamNum = 0;
+
     void Start()
     {
+        hb = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded == true)
+        if (Input.GetKeyDown(KeyCode.UpArrow) && isGrounded == true)
         {
             Jump();
         }
@@ -30,12 +41,27 @@ public class PlayerMainScript : MonoBehaviour
         Move();
         if (moveInput > 0)
             transform.localScale = new Vector3(1, 1, 1);
+            
         else if (moveInput < 0)
             transform.localScale = new Vector3(-1, 1, 1);
 
-        isGrounded = Physics2D.OverlapCircle(transform.position - new Vector3(0, 1, 0), 0.1f, groundMask);
-    }
+        if (Physics2D.OverlapCircle(transform.position - new Vector3(0, 1.01f, 0), 0.1f, groundMask))
+        {
+            hb.excludeLayers = emptyMask;
+            isGrounded = true;
+        }
+        else if  (Physics2D.OverlapCircle(transform.position - new Vector3(0, 1.01f, 0), 0.1f, softBlockMask))
+        {
 
+            isGrounded = true;
+            if (Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                hb.excludeLayers = softBlockMask;
+            }
+        }
+
+
+    }
     void Jump()
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);

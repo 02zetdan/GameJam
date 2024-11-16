@@ -90,7 +90,7 @@ public class marketGraphicsScript : MonoBehaviour
         InitializeBoxes();
     }
 
-    float moveTimer = 0, timeToMove = 2;
+    float moveTimer = 0, timeToMove = 0.75f;
     Vector2 distance = new Vector2(0, 0);
 
     

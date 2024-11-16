@@ -7,6 +7,7 @@ public class MarketManager : MonoBehaviour
     Dictionary<string, int> Market = new Dictionary<string, int>();
     public ScoreManager ScoreManager;
     private List<int> scoreDistribution = new List<int> { 1, 1, 2, 3, 5 };
+    public AudioManager AudioManager;
 
     private GameObject marketGraphics;
     // Start is called before the first frame update
@@ -56,6 +57,7 @@ public class MarketManager : MonoBehaviour
         Market = newMarket();
         sendMarketValues();
         sendNewMarketGraphics();
+        AudioManager.Play("UpdateMarket");
     }
 
     // Update is called once per frame

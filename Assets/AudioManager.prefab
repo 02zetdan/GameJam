@@ -45,15 +45,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sounds:
-  - name: Background Music
-    loop: 1
-    clip: {fileID: 8300000, guid: d72b4c9f952370f4a85a91641b00d9f1, type: 3}
-    volume: 0.338
-    pitch: 1.12
-    source: {fileID: 0}
-  - name: Intense Background Music
-    loop: 1
-    clip: {fileID: 8300000, guid: ce657d84ec40da644a34fc4f0e8b9d18, type: 3}
-    volume: 1
-    pitch: 1.07
+  - name: 
+    loop: 0
+    clip: {fileID: 0}
+    volume: 0
+    pitch: 0
     source: {fileID: 0}

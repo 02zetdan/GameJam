@@ -12,7 +12,7 @@ public class frameScript : MonoBehaviour
     private Image frame;
     private GameObject child;
     Dictionary<string, Sprite> sprites = new Dictionary<string, Sprite>();
-    Dictionary<int, Color> colors = new Dictionary<int, Color>();
+    Dictionary<int, Sprite> frames = new Dictionary<int, Sprite>();
 
     private Sprite carrot, potato, mushroom, onion, steak;
     // Start is called before the first frame update
@@ -26,15 +26,15 @@ public class frameScript : MonoBehaviour
         sprites.Add("mushroom", Resources.Load<Sprite>("IngridientSprites/mushroomSprite"));
 
 
-        colors.Add(1, Color.blue);
-        colors.Add(2, Color.cyan);
+        frames.Add(1, Resources.Load<Sprite>("Frames/stoneframe"));
+        frames.Add(2, Resources.Load<Sprite>("Frames/stoneframe"));
 
-        colors.Add(3, Color.green);
-        colors.Add(4, Color.yellow);
-        colors.Add(5, Color.red);
+        frames.Add(3, Resources.Load<Sprite>("Frames/stoneframe"));
+        frames.Add(4, Resources.Load<Sprite>("Frames/stoneframe"));
+        frames.Add(5, Resources.Load<Sprite>("Frames/stoneframe"));
 
         frame = GetComponent<Image>();
-        frame.color = colors[value];
+        frame.sprite = frames[value];
         child = transform.GetChild(0).gameObject;
         child.GetComponent<Image>().sprite = sprites[ingredient];
     }

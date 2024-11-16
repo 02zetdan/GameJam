@@ -77,6 +77,7 @@ public class PlayerMainScript : MonoBehaviour
                 isPhasing = false;
                 hb.excludeLayers = emptyMask;
                 partiallyPhased = false;
+                isJumping = false;
             }
             else
             {

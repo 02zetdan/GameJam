@@ -34,7 +34,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8399606653979277120
 MonoBehaviour:
@@ -55,7 +55,6 @@ MonoBehaviour:
   isGrounded: 1
   isPhasing: 0
   partiallyPhased: 0
-  isFacingLeft: 1
   wasGrounded: 0
   isJumping: 0
   groundMask:
@@ -111,7 +110,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 10
   m_Sprite: {fileID: 21300000, guid: 0d81099e7531cf84298144631eda4aeb, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -209,6 +208,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ingredientLayer:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 128
   pmScript: {fileID: 0}
   thrownFruit: {fileID: 183784540712709234, guid: 949e14d43a14ccf43a12067db5523505, type: 3}

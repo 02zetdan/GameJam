@@ -14,7 +14,7 @@ public class PlayerMainScript : MonoBehaviour
     public bool isGrounded = false;
     public bool isPhasing = false;
     public bool partiallyPhased = false;
-    public bool isFacingLeft = true;
+    bool isFacingLeft = true;
     public bool wasGrounded = false;
     public bool isJumping = false;
 
@@ -118,10 +118,21 @@ public class PlayerMainScript : MonoBehaviour
         rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
 
         if (moveInput > 0)
+        {
             transform.localScale = new Vector3(1, 1, 1);
+            isFacingLeft = true;
+        }
 
         else if (moveInput < 0)
+        {
             transform.localScale = new Vector3(-1, 1, 1);
+            isFacingLeft = false;
+        }
+    }
+
+    public bool IsFacingLeft()
+    {
+        return isFacingLeft;
     }
 
     private void OnDrawGizmos()

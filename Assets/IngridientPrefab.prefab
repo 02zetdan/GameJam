@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5319643841530567928}
   - component: {fileID: 3654437892522100166}
   - component: {fileID: 2954386530438770460}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: IngridientPrefab
   m_TagString: Ingridient
   m_Icon: {fileID: 0}

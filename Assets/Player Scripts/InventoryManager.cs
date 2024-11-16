@@ -21,6 +21,8 @@ public class InventoryManager : MonoBehaviour
         Mushroom,
     }
 
+    IngridentScript ingScript;
+
     List<Ingredient> inventory = new List<Ingredient>();
 
     float 
@@ -40,17 +42,11 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (pmScript.isFacingLeft && Physics2D.OverlapCircle(transform.position - new Vector3(offset, 0, 0), reach, ingredientLayer) && Input.GetKeyDown(KeyCode.RightControl))
+        if (Input.GetKeyDown(KeyCode.RightControl))
         {
             // Handle removal and get type of Ingredient
-
-            AddIngredient(Ingredient.Steak);
-        }
-        else if (!pmScript.isFacingLeft && Physics2D.OverlapCircle(transform.position + new Vector3(offset, 0, 0),reach,ingredientLayer) && Input.GetKeyDown(KeyCode.RightControl))
-        {
-            // Handle removal and get type of Ingredient
-
-            AddIngredient(Ingredient.Steak);
+            Debug.Log("PICKUP!");
+            PickUpIngredient();
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
@@ -80,5 +76,39 @@ public class InventoryManager : MonoBehaviour
             inventory.RemoveAt(inventory.Count - 1);
         }*/
         Instantiate(thrownFruit,transform);
+    }
+
+    public void PickUpIngredient()
+    {
+        Debug.Log("PICKUP2!");
+        Collider2D foundIngredients;
+        if (!pmScript.isFacingLeft)
+        {
+            Debug.Log("PICKUP L!");
+            foundIngredients = Physics2D.OverlapCircle(transform.position + new Vector3(-0.5f, -0.5f, 0), 0.5f, ingredientLayer);
+        }
+        else
+        {
+            Debug.Log("PICKUP R!");
+            foundIngredients = Physics2D.OverlapCircle(transform.position + new Vector3(0.5f, -0.5f, 0), 0.5f, ingredientLayer);
+        }
+
+        if (foundIngredients != null)
+        {
+            Debug.Log("PICKUP ALMOST DONE!");
+
+            ingScript = foundIngredients.GetComponent<IngridentScript>();
+
+            // string ingType = ingScript.getIngridientTypeString();
+            // ingScript.RemoveMe();
+        }
+    }
+    private void OnDrawGizmos()
+    {
+        // Visualize ground check circle in the editor
+        Gizmos.color = Color.red;
+        Gizmos.DrawWireSphere(transform.position + new Vector3(0.5f, - 0.5f, 0), 0.5f);
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position + new Vector3(-0.5f, -0.5f, 0), 0.5f);
     }
 }

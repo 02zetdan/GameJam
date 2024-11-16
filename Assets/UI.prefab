@@ -179,6 +179,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db127ce671f3a64468e4923eaaa6c38f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ScoreManager: {fileID: 1021059752913125735}
 --- !u!1 &2568896702165600120
 GameObject:
   m_ObjectHideFlags: 0
@@ -536,7 +537,7 @@ RectTransform:
   - {fileID: 3180766157098396707}
   - {fileID: 1517709190508684124}
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -615,6 +616,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9040599971540771936}
+  - component: {fileID: 3440872717436343384}
   m_Layer: 0
   m_Name: EndResultManager
   m_TagString: Untagged
@@ -637,6 +639,20 @@ Transform:
   m_Father: {fileID: 3710256664938028821}
   m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &3440872717436343384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7022971405006231267}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b9b58bc2df211a5478b71f4862dab95c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  resultText: {fileID: 2204830124815101}
+  scoreManager: {fileID: 1021059752913125735}
 --- !u!1 &8529732824559798128
 GameObject:
   m_ObjectHideFlags: 0
@@ -788,5 +804,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cdtext: {fileID: 0}
-  endResultManager: {fileID: 0}
-  startTime: 10
+  endResultManager: {fileID: 7022971405006231267}
+  startTime: 100

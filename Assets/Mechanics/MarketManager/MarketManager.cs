@@ -14,12 +14,12 @@ public class MarketManager : MonoBehaviour
     {
         Market.Add("potato", 5);
         Market.Add("carrot", 3);
-        marketGraphics = transform.Find("MarketGraphics").gameObject;
+        // marketGraphics = transform.Find("MarketGraphics").gameObject;
     }
 
     private void sendNewMarketGraphics()
     {
-        marketGraphics.GetComponent<marketGraphicsScript>().updateMarket(Market, scoreDistribution);
+        // marketGraphics.GetComponent<marketGraphicsScript>().updateMarket(Market, scoreDistribution);
     }
     private void sendMarketValues()
     {

@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 7730200277748812579}
   - component: {fileID: 8399606653979277120}
-  - component: {fileID: 8565416717933179289}
   - component: {fileID: 3680621013055568092}
   - component: {fileID: 9137266409422386051}
   - component: {fileID: 5096905482866386967}
@@ -50,32 +49,28 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rb: {fileID: 9137266409422386051}
-  jumpForce: 5
+  jumpForce: 10
   movementSpeed: 5
   moveInput: 0
   isGrounded: 1
+  isPhasing: 0
+  partiallyPhased: 0
   isFacingLeft: 1
+  wasGrounded: 0
+  isJumping: 0
   groundMask:
     serializedVersion: 2
-    m_Bits: 8
+    m_Bits: 72
   softBlockMask:
     serializedVersion: 2
     m_Bits: 64
+  solidMask:
+    serializedVersion: 2
+    m_Bits: 8
+  emptyMask:
+    serializedVersion: 2
+    m_Bits: 0
   teamNum: 0
---- !u!114 &8565416717933179289
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8398626400227949951}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c29cff538c195c249b69c6f2236de67b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Library: []
-  m_SpriteLibraryAsset: {fileID: 0}
 --- !u!212 &3680621013055568092
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -187,7 +182,7 @@ BoxCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 0, y: -0.25}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -198,7 +193,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 1, y: 2}
+  m_Size: {x: 0.8, y: 1.5}
   m_EdgeRadius: 0
 --- !u!114 &5893323866730236674
 MonoBehaviour:
@@ -216,3 +211,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 0
   pmScript: {fileID: 0}
+  thrownFruit: {fileID: 183784540712709234, guid: 949e14d43a14ccf43a12067db5523505, type: 3}

@@ -15,7 +15,6 @@ public class CountdownTimer : MonoBehaviour
     void Start()
     {
         cdtext = GetComponent<TextMeshProUGUI>();
-        startTime = 10f;
         currentTime = startTime;
 
     }

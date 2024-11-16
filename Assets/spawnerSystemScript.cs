@@ -24,7 +24,7 @@ public class spawnerSystemScript : MonoBehaviour
 
     private void callSpawn()
     {
-        int spawnerIndex = Random.Range(0, spawners.Count - 1);
+        int spawnerIndex = Random.Range(0, spawners.Count);
 
         spawners[spawnerIndex].transform.GetComponent<spawnerScript>().SpawnIngridient();
     }

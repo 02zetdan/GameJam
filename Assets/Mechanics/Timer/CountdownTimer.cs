@@ -30,7 +30,7 @@ public class CountdownTimer : MonoBehaviour
             currentTime = 0;
             OnTimerEnd();
         }
-        if (currentTime <= 60 && !hasMusicChanged)
+        if (currentTime <= 110 && !hasMusicChanged)
         {
             cdtext.color = Color.red;
             OnTriggerIntense();

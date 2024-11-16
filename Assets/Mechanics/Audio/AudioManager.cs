@@ -27,8 +27,21 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.loop = s.loop;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
+            if (s.name == "Background Music")
+            {
+                s.source.volume = 0.2f;
+                s.source.pitch = 1f;
+            }
+            else if(s.name == "Intense Background Music")
+            {
+                s.source.volume = 0.2f;
+                s.source.pitch = 1f;
+            }
+            else
+            {
+                s.source.volume = s.volume;
+                s.source.pitch = s.pitch;
+            }
         }
     }
     private void Start()

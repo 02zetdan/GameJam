@@ -8,21 +8,26 @@ public class ScoreManager : MonoBehaviour
     public TextMeshProUGUI player2ScoreText;
     private int player1Score = 0;
     private int player2Score = 0;
+    Dictionary<string,int> pointMap = new Dictionary<string,int>();
     // Start is called before the first frame update
     void Start()
     {
         
     }
-    public void AddScore(int points,int playerNumber)
+    public void AddScore(string ingredient,int playerNumber)
     {
         if (playerNumber == 1)
         {
-            player1Score += points;
+            player1Score += pointMap[ingredient];
         }
         else if (playerNumber == 2)
         {
-            player2Score += points;
+            player2Score += pointMap[ingredient];
         }
+    }
+    public void updatePointMap(Dictionary<string, int> newMarket)
+    {
+        pointMap = newMarket;
     }
     private void UpdateScoreText(int playerNumber)
     {
@@ -45,6 +50,7 @@ public class ScoreManager : MonoBehaviour
       
         return (player1Score,player2Score);
     }
+
     // Update is called once per frame
     void Update()
     {

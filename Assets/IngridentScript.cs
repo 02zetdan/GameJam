@@ -15,6 +15,7 @@ public class IngridentScript : MonoBehaviour
         mushroom
     }
 
+
     private float 
         carrotSize = 0.5f, 
         potatoSize = 0.5f, 

@@ -23,6 +23,7 @@ public class eventManagerScript : MonoBehaviour
     void Start()
     {
         state = gameState.countDown;
+        marketManager.GetComponent<MarketManager>().MarketUpdate();
     }
     // Update is called once per frame
     void Update()

@@ -9,13 +9,13 @@ public class CountdownTimer : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI cdtext;
-    public EndResultManager endResultManager;
+    public GameObject endResultManager;
     public float startTime;
     private float currentTime; 
     void Start()
     {
         cdtext = GetComponent<TextMeshProUGUI>();
-        startTime = 1f;
+        startTime = 10f;
         currentTime = startTime;
 
     }
@@ -40,7 +40,7 @@ public class CountdownTimer : MonoBehaviour
     }
     private void OnTimerEnd()
     {
-        endResultManager.showWinner();
+        endResultManager.GetComponent<EndResultManager>().showWinner();
         enabled = false;
     }
 }

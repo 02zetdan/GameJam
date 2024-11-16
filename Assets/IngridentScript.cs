@@ -60,7 +60,7 @@ public class IngridentScript : MonoBehaviour
 
     public string getIngridientTypeString()
     {
-        return nameof(IngridientType);
+        return ingridientType.ToString("g");
     }
 
     public void RemoveMe()

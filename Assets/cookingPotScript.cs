@@ -6,7 +6,7 @@ public class cookingPotScript : MonoBehaviour
 {
     // Start is called before the first frame update
     BoxCollider2D stewCollider;
-    GameObject scoreBoard;
+    public GameObject scoreBoard;
     public int owningPlayer;
     void Start()
     {

@@ -7,12 +7,19 @@ public class MarketManager : MonoBehaviour
     Dictionary<string, int> Market = new Dictionary<string, int>();
     public ScoreManager ScoreManager;
     private List<int> scoreDistribution = new List<int> { 1, 1, 2, 3, 5 };
+
+    private GameObject marketGraphics;
     // Start is called before the first frame update
     void Start()
     {
-        Market.Add("Potato", 5);
-        Market.Add("Carrot", 3);
+        Market.Add("potato", 5);
+        Market.Add("carrot", 3);
+        marketGraphics = transform.Find("MarketGraphics").gameObject;
+    }
 
+    private void sendNewMarketGraphics()
+    {
+        marketGraphics.GetComponent<marketGraphicsScript>().updateMarket(Market, scoreDistribution);
     }
     private void sendMarketValues()
     {
@@ -38,6 +45,7 @@ public class MarketManager : MonoBehaviour
     {
         Market = newMarket();
         sendMarketValues();
+        sendNewMarketGraphics();
     }
 
     // Update is called once per frame

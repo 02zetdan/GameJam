@@ -12,7 +12,8 @@ public class ScoreManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        
+        pointMap.Add("potato", 5);
+        pointMap.Add("carrot", 3);
     }
     public void AddScore(string ingredient,int playerNumber)
     {

@@ -15,8 +15,6 @@ public class cookingPotScript : MonoBehaviour
 
     private void registerPoint(string tag)
     {   
-        
-        print("Skickar poäng event till någon manager för " + tag);
         scoreBoard.GetComponent<ScoreManager>().AddScore(tag, owningPlayer);
         //Implementera kod med poäng manager
     }

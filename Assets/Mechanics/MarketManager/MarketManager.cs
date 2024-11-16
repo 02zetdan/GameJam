@@ -33,6 +33,7 @@ public class MarketManager : MonoBehaviour
 
         return newMarketValues;
     }
+
     public void MarketUpdate()
     {
         Market = newMarket();

@@ -43,6 +43,7 @@ public class eventManagerScript : MonoBehaviour
             if (marketTimer <= 0)
             {
                 marketManager.GetComponent<MarketManager>().MarketUpdate();
+                marketTimer = Random.Range(minMarketTime, maxMarketTime);
             }
         }
         else if (state != gameState.end)

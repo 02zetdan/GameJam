@@ -6,14 +6,18 @@ public class cookingPotScript : MonoBehaviour
 {
     // Start is called before the first frame update
     BoxCollider2D stewCollider;
+    GameObject scoreBoard;
+    public int owningPlayer;
     void Start()
     {
         stewCollider = GetComponent<BoxCollider2D>();
     }
 
     private void registerPoint(string tag)
-    {
+    {   
+        
         print("Skickar poäng event till någon manager för " + tag);
+        scoreBoard.GetComponent<ScoreManager>().AddScore(tag, owningPlayer);
         //Implementera kod med poäng manager
     }
 

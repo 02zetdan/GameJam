@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Reflection.Emit;
 using UnityEngine;
+using System;
 using static UnityEngine.Rendering.DebugUI.Table;
 
 public class InventoryManager : MonoBehaviour
@@ -24,10 +25,6 @@ public class InventoryManager : MonoBehaviour
     PickupIngredientScript ingScript;
 
     List<Ingredient> inventory = new List<Ingredient>();
-
-    float 
-        offset = 32f,
-        reach = 64;
 
     public GameObject thrownFruit;
 
@@ -100,7 +97,19 @@ public class InventoryManager : MonoBehaviour
             ingScript = foundIngredients.GetComponent<PickupIngredientScript>();
 
             // string ingType = ingScript.getIngridientTypeString();
-             ingScript.RemoveMe();
+            string type = ingScript.ingredientType.ToString("g");
+
+            Ingredient newPickup;
+            Enum.TryParse(type, out newPickup);
+
+            if (inventory.Count < 5)
+            {
+                AddIngredient(newPickup);
+                ingScript.RemoveMe();
+            }
+
+            Debug.Log(inventory.Count);
+
         }
     }
     private void OnDrawGizmos()

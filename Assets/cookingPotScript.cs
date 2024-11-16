@@ -8,9 +8,19 @@ public class cookingPotScript : MonoBehaviour
     BoxCollider2D stewCollider;
     public GameObject scoreBoard;
     public int owningPlayer;
+    public Color player1Color, player2Color;
     void Start()
     {
         stewCollider = GetComponent<BoxCollider2D>();
+        if (owningPlayer == 1)
+        {
+            GetComponent<SpriteRenderer>().color = player1Color;
+        }
+        else if (owningPlayer == 2) 
+        {
+            GetComponent<SpriteRenderer>().color = player2Color;
+
+        }
     }
 
     private void registerPoint(string tag)
@@ -33,6 +43,7 @@ public class cookingPotScript : MonoBehaviour
             string ingridientType = collision.gameObject.GetComponent<IngridentScript>().getIngridientTypeString();
             registerPoint(ingridientType);
             collision.GetComponent<IngridentScript>().RemoveMe();
+            transform.Find("Splash").GetComponent<ParticleSystem>().Play();
         }
     }
 }

@@ -9,12 +9,14 @@ public class CountdownTimer : MonoBehaviour
 {
     // Start is called before the first frame update
     public TextMeshProUGUI cdtext;
-    public float startTime = 10f;
+    public float startTime;
     private float currentTime; 
     void Start()
     {
         cdtext = GetComponent<TextMeshProUGUI>();
+        startTime = 300f;
         currentTime = startTime;
+
     }
 
     // Update is called once per frame
@@ -25,6 +27,13 @@ public class CountdownTimer : MonoBehaviour
         {
             currentTime = 0;
         }
-        cdtext.text = currentTime.ToString("F0");
+        if (currentTime <= 30)
+        {
+            cdtext.color = Color.red;
+        }
+        int minutes = Mathf.FloorToInt(currentTime / 60); // Total minutes left
+        int seconds = Mathf.FloorToInt(currentTime % 60); // Remaining seconds in the current minute
+
+        cdtext.text = string.Format("{0:00}:{1:00}", minutes, seconds);
     }
 }

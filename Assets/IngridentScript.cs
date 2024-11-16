@@ -6,7 +6,7 @@ using System;
 
 public class IngridentScript : MonoBehaviour
 {
-    public enum IngridientType
+    public enum IngredientType
     {
         carrot,
         potato,
@@ -28,7 +28,7 @@ public class IngridentScript : MonoBehaviour
     private float blinkTimer = 0, orgTimeToBlink = 0.5f, timeToBlink, startBlinkingFactor = 0.7f;
    
 
-    public IngridientType ingridientType = IngridientType.carrot;
+    public IngredientType ingredientType;
     private SpriteRenderer sprite;
     // Start is called before the first frame update
     void Start()
@@ -58,9 +58,9 @@ public class IngridentScript : MonoBehaviour
 
     }
 
-    public string getIngridientTypeString()
+    public string getIngredientTypeString()
     {
-        return ingridientType.ToString("g");
+        return ingredientType.ToString("g");
     }
 
     public void RemoveMe()

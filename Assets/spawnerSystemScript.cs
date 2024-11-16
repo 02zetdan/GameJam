@@ -26,7 +26,7 @@ public class spawnerSystemScript : MonoBehaviour
     {
         int spawnerIndex = Random.Range(0, spawners.Count);
 
-        spawners[spawnerIndex].transform.GetComponent<spawnerScript>().SpawnIngridient();
+        spawners[spawnerIndex].transform.GetComponent<spawnerScript>().SpawnIngredient();
     }
     // Update is called once per frame
     void Update()

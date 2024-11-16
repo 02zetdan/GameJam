@@ -6,11 +6,9 @@ public class spawnerScript : MonoBehaviour
 {
     private float
         min_x = 1,
-        max_x = 4,
-        min_y = 1,
-        max_y = 3;
+        max_x = 4;
 
-    public GameObject ingridientPrefab;
+    public GameObject ingredientPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -23,15 +21,10 @@ public class spawnerScript : MonoBehaviour
         
     }
 
-    public void SpawnIngridient()
+    public void SpawnIngredient()
     {
         int direction = Random.Range(0, 1);
-        Vector2 start_vel;
-        start_vel = new Vector2((1 - (2 * direction)) * Random.Range(min_x, max_x), Random.Range(min_y, max_y));
-        GameObject ingridient = Instantiate(ingridientPrefab, transform.position, Quaternion.identity);
-        Rigidbody2D rb;
-
-        rb = ingridient.GetComponent<Rigidbody2D>();
-        rb.velocity = start_vel;
+        float distance = (1-2*direction)*Random.Range(0, max_x);
+        GameObject ingredient = Instantiate(ingredientPrefab, new Vector2(transform.position.x + distance, transform.position.y), Quaternion.identity);
     }
 }

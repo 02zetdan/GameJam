@@ -41,7 +41,7 @@ public class cookingPotScript : MonoBehaviour
         if (tag == "Ingridient")
         {
             int splashNumb = Random.Range(1, 4);
-            string ingridientType = collision.gameObject.GetComponent<IngridentScript>().getIngridientTypeString();
+            string ingridientType = collision.gameObject.GetComponent<IngridentScript>().getIngredientTypeString();
             registerPoint(ingridientType);
             collision.GetComponent<IngridentScript>().RemoveMe();
             transform.Find("Splash").GetComponent<ParticleSystem>().Play();

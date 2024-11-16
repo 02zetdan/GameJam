@@ -69,8 +69,6 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
-        print("Hej hej");
-        //print(foundSound.source.);
         foundSound.source.Play();
     }
     public void Stop(string name) 

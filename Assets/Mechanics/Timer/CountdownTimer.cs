@@ -11,7 +11,7 @@ public class CountdownTimer : MonoBehaviour
     public TextMeshProUGUI cdtext;
     public GameObject endResultManager;
     public float startTime;
-    private float currentTime; 
+    private float currentTime;
     void Start()
     {
         cdtext = GetComponent<TextMeshProUGUI>();
@@ -49,3 +49,4 @@ public class CountdownTimer : MonoBehaviour
         FindObjectOfType<AudioManager>().Stop("Background Music");
         FindObjectOfType<AudioManager>().Play("Background Music");
     }
+}

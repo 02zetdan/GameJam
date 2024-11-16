@@ -6,6 +6,7 @@ using System.Globalization;
 
 public class AudioManager : MonoBehaviour
 {
+    //
     public Sound[] sounds;
     public static AudioManager instance;
     // Start is called before the first frame update
@@ -26,13 +27,26 @@ public class AudioManager : MonoBehaviour
             s.source = gameObject.AddComponent<AudioSource>();
             s.source.clip = s.clip;
             s.source.loop = s.loop;
-            s.source.volume = s.volume;
-            s.source.pitch = s.pitch;
+            if (s.name == "Background Music")
+            {
+                s.source.volume = 0.2f;
+                s.source.pitch = 1f;
+            }
+            else if(s.name == "Intense Background Music")
+            {
+                s.source.volume = 0.2f;
+                s.source.pitch = 1f;
+            }
+            else
+            {
+                s.source.volume = s.volume;
+                s.source.pitch = s.pitch;
+            }
         }
     }
     private void Start()
     {
-        Play("Background music");
+        Play("Background Music");
     }
     private Sound FindSound(string name)
     {
@@ -55,6 +69,8 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+        print("Hej hej");
+        //print(foundSound.source.);
         foundSound.source.Play();
     }
     public void Stop(string name) 
@@ -65,6 +81,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+
         foundSound.source.Stop();
     }
     // Update is called once per frame

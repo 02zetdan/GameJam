@@ -8,7 +8,7 @@ public class frameScript : MonoBehaviour
 {
 
     public int value;
-    public string ingridient;
+    public string ingredient;
     private Image frame;
     private GameObject child;
     Dictionary<string, Sprite> sprites = new Dictionary<string, Sprite>();
@@ -36,11 +36,13 @@ public class frameScript : MonoBehaviour
         frame = GetComponent<Image>();
         frame.color = colors[value];
         child = transform.GetChild(0).gameObject;
-        child.GetComponent<Image>().sprite = sprites[ingridient];
-
-
+        child.GetComponent<Image>().sprite = sprites[ingredient];
     }
 
+    public void ChangeIngredient(string ingredient)
+    {
+        child.GetComponent<Image>().sprite = sprites[ingredient];
+    }
     // Update is called once per frame
     void Update()
     {

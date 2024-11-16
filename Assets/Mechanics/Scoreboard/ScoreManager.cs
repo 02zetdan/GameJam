@@ -40,6 +40,11 @@ public class ScoreManager : MonoBehaviour
         UpdateScoreText(1);
         UpdateScoreText(2);
     }
+    public (int,int) getScores()
+    {
+      
+        return (player1Score,player2Score);
+    }
     // Update is called once per frame
     void Update()
     {

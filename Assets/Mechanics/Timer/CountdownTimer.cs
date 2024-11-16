@@ -12,18 +12,11 @@ public class CountdownTimer : MonoBehaviour
     public GameObject endResultManager;
     public float startTime;
     private float currentTime;
-<<<<<<< HEAD
-    void Start()
-    {
-        cdtext = GetComponent<TextMeshProUGUI>();
-        startTime = 10f;
-=======
     private bool hasMusicChanged = false;
     void Start()
     {
         cdtext = GetComponent<TextMeshProUGUI>();
         startTime = 65f;
->>>>>>> fa97b7d (Fix Background Music)
         currentTime = startTime;
 
     }
@@ -50,12 +43,8 @@ public class CountdownTimer : MonoBehaviour
     }
     private void OnTimerEnd()
     {
-<<<<<<< HEAD
         endResultManager.GetComponent<EndResultManager>().showWinner();
-=======
-        endResultManager.showWinner();
         FindObjectOfType<AudioManager>().Stop("Intense Background Music");
->>>>>>> fa97b7d (Fix Background Music)
         enabled = false;
     }
     private void OnTriggerIntense()

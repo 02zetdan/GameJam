@@ -21,7 +21,7 @@ public class InventoryManager : MonoBehaviour
         Mushroom,
     }
 
-    IngridentScript ingScript;
+    PickupIngredientScript ingScript;
 
     List<Ingredient> inventory = new List<Ingredient>();
 
@@ -82,7 +82,7 @@ public class InventoryManager : MonoBehaviour
     {
         Debug.Log("PICKUP2!");
         Collider2D foundIngredients;
-        if (!pmScript.isFacingLeft)
+        if (!pmScript.IsFacingLeft())
         {
             Debug.Log("PICKUP L!");
             foundIngredients = Physics2D.OverlapCircle(transform.position + new Vector3(-0.5f, -0.5f, 0), 0.5f, ingredientLayer);
@@ -97,10 +97,10 @@ public class InventoryManager : MonoBehaviour
         {
             Debug.Log("PICKUP ALMOST DONE!");
 
-            ingScript = foundIngredients.GetComponent<IngridentScript>();
+            ingScript = foundIngredients.GetComponent<PickupIngredientScript>();
 
             // string ingType = ingScript.getIngridientTypeString();
-            // ingScript.RemoveMe();
+             ingScript.RemoveMe();
         }
     }
     private void OnDrawGizmos()

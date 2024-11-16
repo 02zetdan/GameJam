@@ -30,7 +30,7 @@ public class MarketManager : MonoBehaviour
 
     private void sendNewMarketGraphics()
     {
-        // marketGraphics.GetComponent<marketGraphicsScript>().updateMarket(Market, scoreDistribution);
+        marketGraphics.GetComponent<marketGraphicsScript>().updateMarket(Market, scoreDistribution);
     }
     private void sendMarketValues()
     {

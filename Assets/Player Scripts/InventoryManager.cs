@@ -27,7 +27,6 @@ public class InventoryManager : MonoBehaviour
     int teamNumber;
 
 
-
     List<Pickup> inventory = new List<Pickup>();
 
     public GameObject fryingpan;
@@ -42,6 +41,9 @@ public class InventoryManager : MonoBehaviour
 
     float ingredientThrowSpeedX = 12, ingredientThrowSpeedY = 2;
 
+    KeyCode pickUpButton;
+    KeyCode throwButton;
+
 
     // Start is called before the first frame update
     void Start()
@@ -54,6 +56,16 @@ public class InventoryManager : MonoBehaviour
         ingredients.Add(Pickup.Mushroom, Resources.Load<GameObject>("Object Prefabs/mushroomObject"));
         pmScript = GetComponent<PlayerMainScript>();
         teamNumber = pmScript.teamNum;
+        if (teamNumber == 1)
+        {
+            pickUpButton = KeyCode.Joystick1Button2;
+            throwButton = KeyCode.Joystick1Button3;
+        }
+        else if (teamNumber == 2)
+        {
+            pickUpButton = KeyCode.Joystick2Button2;
+            throwButton = KeyCode.Joystick2Button3;
+        }
     }
 
     // Update is called once per frame
@@ -69,13 +81,13 @@ public class InventoryManager : MonoBehaviour
             throwPosition = transform.position + new Vector3(0.5f, 0, 0);
             throwDirection.x = 1;
         }
-        if (Input.GetKeyDown(KeyCode.RightControl))
+        if (Input.GetKeyDown(pickUpButton))
         {
             // Handle removal and get type of Ingredient
             //Debug.Log("PICKUP!");
             PickUpIngredient();
         }
-        if (Input.GetKeyDown(KeyCode.LeftControl))
+        if (Input.GetKeyDown(throwButton))
         {
             // Throw Ingredient
             ThrowIngredient();

@@ -19,6 +19,7 @@ public class PlayerMainScript : MonoBehaviour
     bool isFacingLeft = true;
     public bool wasGrounded = false;
     public bool isJumping = false;
+    public bool isStunned = false;
 
     public LayerMask groundMask;
     public LayerMask softBlockMask;
@@ -95,7 +96,7 @@ public class PlayerMainScript : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(dropButton) && Physics2D.OverlapCircle(transform.position - new Vector3(0, 1, 0), 0.1f, softBlockMask) && (isJumping == false) && (isPhasing == false) && (partiallyPhased == false))
+        if (Input.GetKeyDown(dropButton) && Physics2D.OverlapCircle(transform.position - new Vector3(0, 1, 0), 0.1f, softBlockMask) && (isJumping == false) && (isPhasing == false) && (isStunned == false))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
             hb.excludeLayers = softPlayerBlockMask;
@@ -105,7 +106,7 @@ public class PlayerMainScript : MonoBehaviour
             int dropNumber = UnityEngine.Random.Range(1, 3);
             FindObjectOfType<AudioManager>().Play("Drop" + dropNumber.ToString("0")); //QQQQQ
         }
-        if (Input.GetKeyDown(jumpButton) && (isGrounded == true) && (isPhasing == false) && (partiallyPhased == false))
+        if (Input.GetKeyDown(jumpButton) && (isGrounded == true) && (isPhasing == false) && (isStunned == false))
         {
             Debug.Log("Player Team Num: " + teamNum);
             Debug.Log(jumpButton);
@@ -117,8 +118,10 @@ public class PlayerMainScript : MonoBehaviour
     }
     private void FixedUpdate()
     {
-        Move();
-        
+        if (isStunned == false)
+        {
+            Move();
+        }
     }
 
     void Jump()

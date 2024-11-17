@@ -111,8 +111,8 @@ public class PlayerMainScript : MonoBehaviour
         }
         if (Input.GetKeyDown(jumpButton) && (isGrounded == true) && (isPhasing == false) && (isStunned == false))
         {
-            Debug.Log("Player Team Num: " + teamNum);
-            Debug.Log(jumpButton);
+            //Debug.Log("Player Team Num: " + teamNum);
+            //Debug.Log(jumpButton);
             //Debug.Log("Jump!");
             Jump();
         }

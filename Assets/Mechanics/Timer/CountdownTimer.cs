@@ -43,6 +43,9 @@ public class CountdownTimer : MonoBehaviour
     }
     private void OnTimerEnd()
     {
+        FindObjectOfType<AudioManager>().Stop("Intense Background Music");
+        FindObjectOfType<AudioManager>().Play("Finish");
+        //FindObjectOfType<AudioManager>().Play("Finish");
         endResultManager.GetComponent<EndResultManager>().showWinner();
         FindObjectOfType<AudioManager>().Stop("Intense Background Music");
         FindObjectOfType<AudioManager>().Stop("Timer");

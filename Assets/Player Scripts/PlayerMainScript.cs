@@ -27,6 +27,8 @@ public class PlayerMainScript : MonoBehaviour
 
     public int teamNum = 0;
 
+    private bool isWalking;
+
     void Start()
     {
         hb = GetComponent<BoxCollider2D>();
@@ -91,7 +93,8 @@ public class PlayerMainScript : MonoBehaviour
             hb.excludeLayers = softBlockMask;
             isPhasing = true;
             partiallyPhased = false;
-            FindObjectOfType<AudioManager>().Play("Drop");
+            int dropNumber = Random.Range(1, 3);
+            FindObjectOfType<AudioManager>().Play("Drop" + dropNumber.ToString("0")); //QQQQQ
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) && (isGrounded == true) && (isPhasing == false) && (partiallyPhased == false))
         {
@@ -111,7 +114,8 @@ public class PlayerMainScript : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        FindObjectOfType<AudioManager>().Play("Jump");
+        int jumpNumber = Random.Range(1, 3);
+        FindObjectOfType<AudioManager>().Play("Jump" + jumpNumber.ToString("0")); //QQQQQ
         isJumping = true;
     }
 
@@ -119,19 +123,35 @@ public class PlayerMainScript : MonoBehaviour
     {
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
-       
+
         if (moveInput > 0)
         {
+            if (!isFacingLeft || !isWalking)
+            {
+                FindObjectOfType<AudioManager>().Play("Walk");
+                isWalking = true;
+            }
+
             transform.localScale = new Vector3(1, 1, 1);
             isFacingLeft = true;
-            //FindObjectOfType<AudioManager>().Play("Walk");
         }
 
         else if (moveInput < 0)
         {
+            if (isFacingLeft || !isWalking)
+            {
+                FindObjectOfType<AudioManager>().Play("Walk");
+                isWalking = true;
+            }
+
             transform.localScale = new Vector3(-1, 1, 1);
             isFacingLeft = false;
-            //FindObjectOfType<AudioManager>().Play("Walk");
+            
+        }
+        else 
+        {
+            FindObjectOfType<AudioManager>().Stop("Walk");
+            isWalking = false;
         }
     }
 

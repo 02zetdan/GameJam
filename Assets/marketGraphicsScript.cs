@@ -24,7 +24,6 @@ public class marketGraphicsScript : MonoBehaviour
 
     public void updateMarket(Dictionary<string, int> newMarket, List<int> distribution)
     {
-        print("updaterar market!");
         Market = newMarket;
         scoreDistribution = distribution;
         changeIngredients = true;
@@ -37,7 +36,6 @@ public class marketGraphicsScript : MonoBehaviour
         startX = -(-boxWidth+(boxCount - 1) * boxGap + boxWidth * boxCount) / 2;
         Vector2 startPos = new Vector2(0, 0);
         startPos.x = startX;
-        print("DOES THIS HAPPEN");
         List<int> sortedScores = new List<int>(scoreDistribution);
         sortedScores.Sort();
         sortedScores.Reverse();

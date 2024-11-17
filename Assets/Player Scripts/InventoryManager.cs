@@ -5,26 +5,31 @@ using UnityEngine;
 using System;
 using static UnityEngine.Rendering.DebugUI.Table;
 
+public enum Pickup
+{
+    Onion,
+    Steak,
+    Potato,
+    Carrot,
+    Mushroom,
+    FryingPan,
+    RollingPin
+}
+
+
 public class InventoryManager : MonoBehaviour
 {
     public LayerMask ingredientLayer;
     public PlayerMainScript pmScript;
+    public UIInventoryManager UIManager;
     //public Canvas canvas;
 
     int teamNumber;
 
-    enum Ingredient
-    {
-        Onion,
-        Steak,
-        Potato,
-        Carrot,
-        Mushroom,
-    }
 
     PickupIngredientScript ingScript;
 
-    List<Ingredient> inventory = new List<Ingredient>();
+    List<Pickup> inventory = new List<Pickup>();
 
     public GameObject thrownFruit;
 
@@ -51,9 +56,11 @@ public class InventoryManager : MonoBehaviour
         }
     }
 
-    void AddIngredient(Ingredient ingredient)
+    void AddIngredient(Pickup ingredient)
     {
         inventory.Add(ingredient);
+        UIManager.AddItem(teamNumber, ingredient);
+       
     }
 
     void RemoveIngredient()
@@ -62,6 +69,7 @@ public class InventoryManager : MonoBehaviour
         {
             inventory.RemoveAt(inventory.Count - 1);
         }
+        UIManager.RemoveItem(teamNumber);
     }
 
     void ThrowFruit()
@@ -99,11 +107,13 @@ public class InventoryManager : MonoBehaviour
             // string ingType = ingScript.getIngridientTypeString();
             string type = ingScript.ingredientType.ToString("g");
 
-            Ingredient newPickup;
+            Pickup newPickup;
             Enum.TryParse(type, out newPickup);
 
             if (inventory.Count < 5)
             {
+                int pickupNumber = UnityEngine.Random.Range(1, 3);
+                FindObjectOfType<AudioManager>().Play("PickupIngredient" + pickupNumber.ToString("0"));
                 AddIngredient(newPickup);
                 ingScript.RemoveMe();
             }

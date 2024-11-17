@@ -7,8 +7,8 @@ public class WeaponPrefabScript : MonoBehaviour
 {
     public enum WeaponType
     {
-        fryingPan,
-        rollingPin
+        FryingPan,
+        RollingPin
     }
     // Start is called before the first frame update
     private float despawnTimer = 0, timeToDespawn = 5;
@@ -25,8 +25,8 @@ public class WeaponPrefabScript : MonoBehaviour
 
     void Start()
     {
-        sprites.Add("fryingPan", Resources.Load<Sprite>("WeaponSprites/rollingPinSprite"));
-        sprites.Add("rollingPin", Resources.Load<Sprite>("WeaponSprites/fryingPanSprite"));
+        sprites.Add("FryingPan", Resources.Load<Sprite>("WeaponSprites/rollingPinSprite"));
+        sprites.Add("RollingPin", Resources.Load<Sprite>("WeaponSprites/fryingPanSprite"));
 
         timeToBlink = orgTimeToBlink;
         sprite = GetComponent<SpriteRenderer>();

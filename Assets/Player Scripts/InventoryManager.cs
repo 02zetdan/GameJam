@@ -13,7 +13,7 @@ public enum Pickup
     Carrot,
     Mushroom,
     FryingPan,
-    RollingPin
+    RollingPin,
 }
 
 
@@ -31,7 +31,11 @@ public class InventoryManager : MonoBehaviour
 
     List<Pickup> inventory = new List<Pickup>();
 
-    public GameObject thrownFruit;
+    public GameObject fryingpan;
+    public GameObject rollingPin;
+
+    Vector2 throwPosition;
+    Quaternion throwDirection = new Quaternion(0,0,0,0);
 
 
     // Start is called before the first frame update
@@ -44,6 +48,16 @@ public class InventoryManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (!pmScript.IsFacingLeft())
+        {
+            throwPosition = transform.position + new Vector3(-0.5f, 0, 0);
+            throwDirection.x = -1;
+        }
+        else
+        {
+            throwPosition = transform.position + new Vector3(0.5f, 0, 0);
+            throwDirection.x = 1;
+        }
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             // Handle removal and get type of Ingredient
@@ -52,7 +66,8 @@ public class InventoryManager : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
         {
-            ThrowFruit();
+            // Throw Ingredient
+            ThrowIngredient();
         }
     }
 
@@ -72,15 +87,29 @@ public class InventoryManager : MonoBehaviour
         UIManager.RemoveItem(teamNumber);
     }
 
-    void ThrowFruit()
+    void ThrowIngredient()
     {
-        /*Debug.Log(inventory.Count.ToString());
+        Debug.Log(inventory.Count.ToString());
         if (inventory.Count != 0)
         {
-            Ingredient thrownIngredient = inventory[inventory.Count - 1];
+            Pickup thrownIngredient = inventory[inventory.Count - 1];
             inventory.RemoveAt(inventory.Count - 1);
-        }*/
-        Instantiate(thrownFruit,transform);
+
+            if (thrownIngredient == Pickup.FryingPan)
+            {
+                Instantiate(fryingpan, throwPosition, new Quaternion());
+            }
+            else if (thrownIngredient == Pickup.RollingPin)
+            {
+                Instantiate(rollingPin, throwPosition, new Quaternion());
+            }
+            else
+            {
+                // Skapa Ingrediens throwable
+                Instantiate(rollingPin, throwPosition, new Quaternion());
+            }
+
+        }
     }
 
     public void PickUpIngredient()

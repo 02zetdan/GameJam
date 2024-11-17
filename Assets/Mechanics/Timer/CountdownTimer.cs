@@ -49,7 +49,7 @@ public class CountdownTimer : MonoBehaviour
         endResultManager.GetComponent<EndResultManager>().showWinner();
         FindObjectOfType<AudioManager>().Stop("Intense Background Music");
         FindObjectOfType<AudioManager>().Stop("Timer");
-        FindObjectOfType<AudioManager>().Play("Finish");
+        FindObjectOfType<AudioManager>().Play("Post Match Music");
         enabled = false;
     }
     private void OnTriggerIntense()

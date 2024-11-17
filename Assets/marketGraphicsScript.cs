@@ -38,7 +38,7 @@ public class marketGraphicsScript : MonoBehaviour
         startPos.x = startX;
         List<int> sortedScores = new List<int>(scoreDistribution);
         sortedScores.Sort();
-        sortedScores.Reverse();
+        //sortedScores.Reverse();
         Dictionary<string, int> marketCopy = new Dictionary<string, int>(Market);
         for (int i = 0; i <= scoreDistribution.Count - 1; i++)
         {

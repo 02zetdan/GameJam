@@ -173,15 +173,18 @@ public class InventoryManager : MonoBehaviour
                 PickupIngredientScript ingScript;
                 ingScript = foundIngredients.GetComponent<PickupIngredientScript>();
                 type = ingScript.ingredientType.ToString("g");
+                print("TYPEN ÄR " + ingScript.GetType());
+
             }
             else if(foundIngredients.tag == "weapon")
             {
                 WeaponPrefabScript ingScript;
                 ingScript = foundIngredients.GetComponent<WeaponPrefabScript>();
                 type = ingScript.weaponType.ToString("g");
-                print(type);
+                print("TYPEN ÄR " + ingScript.GetType());
 
             }
+
 
             // string ingType = ingScript.getIngridientTypeString();
 

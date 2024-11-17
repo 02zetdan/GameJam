@@ -36,6 +36,9 @@ public class InventoryManager : MonoBehaviour
 
     Vector2 throwPosition;
     Quaternion throwDirection = new Quaternion(0,0,0,0);
+    float weaponThrowSpeedX = 15, weaponThrowSpeedY = 1;
+
+    float ingredientThrowSpeedX = 12, ingredientThrowSpeedY = 2;
 
 
     // Start is called before the first frame update
@@ -92,21 +95,31 @@ public class InventoryManager : MonoBehaviour
         Debug.Log(inventory.Count.ToString());
         if (inventory.Count != 0)
         {
+            int direction = 1;
+            if (!pmScript.IsFacingLeft())
+            {
+                direction = -1;
+            }
             Pickup thrownIngredient = inventory[inventory.Count - 1];
             inventory.RemoveAt(inventory.Count - 1);
 
             if (thrownIngredient == Pickup.FryingPan)
             {
-                Instantiate(fryingpan, throwPosition, new Quaternion());
+                GameObject b = Instantiate(fryingpan, throwPosition, new Quaternion());
+                b.GetComponent<Rigidbody2D>().velocity = new Vector3(weaponThrowSpeedX * direction, weaponThrowSpeedY, 0);
+
             }
             else if (thrownIngredient == Pickup.RollingPin)
             {
-                Instantiate(rollingPin, throwPosition, new Quaternion());
+                GameObject b = Instantiate(rollingPin, throwPosition, new Quaternion());
+                b.GetComponent<Rigidbody2D>().velocity = new Vector3(weaponThrowSpeedX*direction, weaponThrowSpeedY, 0);
             }
             else
             {
                 // Skapa Ingrediens throwable
-                Instantiate(rollingPin, throwPosition, new Quaternion());
+                GameObject b = Instantiate(rollingPin, throwPosition, new Quaternion());
+                b.GetComponent<Rigidbody2D>().velocity = new Vector3(ingredientThrowSpeedX * direction, ingredientThrowSpeedY, 0);
+
             }
             UIManager.RemoveItem(teamNumber);
 

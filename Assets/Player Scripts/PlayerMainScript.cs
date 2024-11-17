@@ -25,12 +25,15 @@ public class PlayerMainScript : MonoBehaviour
 
     BoxCollider2D hb;
 
-    public int teamNum = 0;
+    public int teamNum = 1;
 
     private bool isWalking;
 
+    ParticleSystem walkingParticles;
+
     void Start()
     {
+        walkingParticles = GetComponentInChildren<ParticleSystem>();
         hb = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
     }
@@ -38,7 +41,24 @@ public class PlayerMainScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
         isGrounded = Physics2D.OverlapCircle(transform.position - new Vector3(0, 1, 0), 0.1f, groundMask);
+
+        if (isGrounded == false)
+        {
+            isWalking = false;
+        }
+
+        if (isWalking == true)
+        {
+            walkingParticles.Play();
+
+        }
+        else 
+        {
+            walkingParticles.Stop();
+        }
+
         if ((isPhasing == true) && (isGrounded == true) && (wasGrounded != true) && (isJumping == false))
         {
             if (partiallyPhased == true)
@@ -87,7 +107,7 @@ public class PlayerMainScript : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.DownArrow) && Physics2D.OverlapCircle(transform.position - new Vector3(0, 1, 0), 0.1f, softBlockMask) && (isJumping == false) && (isPhasing == false) && (partiallyPhased == false))
+        if (Input.GetButtonDown("DropP"+teamNum) && Physics2D.OverlapCircle(transform.position - new Vector3(0, 1, 0), 0.1f, softBlockMask) && (isJumping == false) && (isPhasing == false) && (partiallyPhased == false))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
             hb.excludeLayers = softBlockMask;
@@ -96,7 +116,7 @@ public class PlayerMainScript : MonoBehaviour
             int dropNumber = Random.Range(1, 3);
             FindObjectOfType<AudioManager>().Play("Drop" + dropNumber.ToString("0")); //QQQQQ
         }
-        if (Input.GetKeyDown(KeyCode.UpArrow) && (isGrounded == true) && (isPhasing == false) && (partiallyPhased == false))
+        if (Input.GetButtonDown("JumpP"+teamNum) && (isGrounded == true) && (isPhasing == false) && (partiallyPhased == false))
         {
             //Debug.Log("Jump!");
             Jump();
@@ -121,7 +141,7 @@ public class PlayerMainScript : MonoBehaviour
 
     void Move()
     {
-        moveInput = Input.GetAxis("Horizontal");
+        moveInput = Input.GetAxis("HorizontalP"+teamNum);
         rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
 
         if (moveInput > 0)
@@ -133,6 +153,7 @@ public class PlayerMainScript : MonoBehaviour
             }
 
             transform.localScale = new Vector3(1, 1, 1);
+            walkingParticles.transform.localScale = new Vector3(-0.2f, 0.2f, 0.2f);
             isFacingLeft = true;
         }
 
@@ -145,6 +166,7 @@ public class PlayerMainScript : MonoBehaviour
             }
 
             transform.localScale = new Vector3(-1, 1, 1);
+            walkingParticles.transform.localScale = new Vector3(0.2f, 0.2f, 0.2f);
             isFacingLeft = false;
             
         }

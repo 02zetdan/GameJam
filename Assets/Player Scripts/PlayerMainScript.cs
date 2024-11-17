@@ -91,6 +91,7 @@ public class PlayerMainScript : MonoBehaviour
             hb.excludeLayers = softBlockMask;
             isPhasing = true;
             partiallyPhased = false;
+            FindObjectOfType<AudioManager>().Play("Drop");
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) && (isGrounded == true) && (isPhasing == false) && (partiallyPhased == false))
         {
@@ -110,6 +111,7 @@ public class PlayerMainScript : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
+        FindObjectOfType<AudioManager>().Play("Jump");
         isJumping = true;
     }
 
@@ -117,17 +119,19 @@ public class PlayerMainScript : MonoBehaviour
     {
         moveInput = Input.GetAxis("Horizontal");
         rb.velocity = new Vector2(moveInput * movementSpeed, rb.velocity.y);
-
+       
         if (moveInput > 0)
         {
             transform.localScale = new Vector3(1, 1, 1);
             isFacingLeft = true;
+            //FindObjectOfType<AudioManager>().Play("Walk");
         }
 
         else if (moveInput < 0)
         {
             transform.localScale = new Vector3(-1, 1, 1);
             isFacingLeft = false;
+            //FindObjectOfType<AudioManager>().Play("Walk");
         }
     }
 

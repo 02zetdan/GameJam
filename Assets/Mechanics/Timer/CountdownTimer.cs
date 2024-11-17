@@ -13,6 +13,7 @@ public class CountdownTimer : MonoBehaviour
     public float startTime;
     private float currentTime;
     private bool hasMusicChanged = false;
+
     void Start()
     {
         cdtext = GetComponent<TextMeshProUGUI>();
@@ -44,6 +45,8 @@ public class CountdownTimer : MonoBehaviour
     {
         endResultManager.GetComponent<EndResultManager>().showWinner();
         FindObjectOfType<AudioManager>().Stop("Intense Background Music");
+        FindObjectOfType<AudioManager>().Stop("Timer");
+        FindObjectOfType<AudioManager>().Play("Finish");
         enabled = false;
     }
     private void OnTriggerIntense()

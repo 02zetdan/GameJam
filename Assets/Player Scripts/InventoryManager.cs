@@ -27,13 +27,12 @@ public class InventoryManager : MonoBehaviour
     int teamNumber;
 
 
+    PickupIngredientScript ingScript;
+
     List<Pickup> inventory = new List<Pickup>();
 
     public GameObject fryingpan;
     public GameObject rollingPin;
-    public GameObject ingredient;
-
-    private Dictionary<Pickup, GameObject> ingredients = new Dictionary<Pickup, GameObject>();
 
     Vector2 throwPosition;
     Quaternion throwDirection = new Quaternion(0,0,0,0);
@@ -41,31 +40,12 @@ public class InventoryManager : MonoBehaviour
 
     float ingredientThrowSpeedX = 12, ingredientThrowSpeedY = 2;
 
-    KeyCode pickUpButton;
-    KeyCode throwButton;
-
 
     // Start is called before the first frame update
     void Start()
     {
-        ingredients.Add(Pickup.Carrot, Resources.Load<GameObject>("Object Prefabs/carrotObject"));
-        ingredients.Add(Pickup.Potato, Resources.Load<GameObject>("Object Prefabs/potatoObject"));
-
-        ingredients.Add(Pickup.Onion, Resources.Load<GameObject>("Object Prefabs/onionObject"));
-        ingredients.Add(Pickup.Steak, Resources.Load<GameObject>("Object Prefabs/steakObject"));
-        ingredients.Add(Pickup.Mushroom, Resources.Load<GameObject>("Object Prefabs/mushroomObject"));
         pmScript = GetComponent<PlayerMainScript>();
         teamNumber = pmScript.teamNum;
-        if (teamNumber == 1)
-        {
-            pickUpButton = KeyCode.Joystick1Button2;
-            throwButton = KeyCode.Joystick1Button3;
-        }
-        else if (teamNumber == 2)
-        {
-            pickUpButton = KeyCode.Joystick2Button2;
-            throwButton = KeyCode.Joystick2Button3;
-        }
     }
 
     // Update is called once per frame
@@ -81,13 +61,13 @@ public class InventoryManager : MonoBehaviour
             throwPosition = transform.position + new Vector3(0.5f, 0, 0);
             throwDirection.x = 1;
         }
-        if (Input.GetKeyDown(pickUpButton))
+        if (Input.GetKeyDown(KeyCode.RightControl))
         {
             // Handle removal and get type of Ingredient
             //Debug.Log("PICKUP!");
             PickUpIngredient();
         }
-        if (Input.GetKeyDown(throwButton))
+        if (Input.GetKeyDown(KeyCode.LeftControl))
         {
             // Throw Ingredient
             ThrowIngredient();
@@ -96,6 +76,7 @@ public class InventoryManager : MonoBehaviour
 
     void AddIngredient(Pickup ingredient)
     {
+
         inventory.Add(ingredient);
         UIManager.AddItem(teamNumber, ingredient);
        
@@ -112,7 +93,7 @@ public class InventoryManager : MonoBehaviour
 
     void ThrowIngredient()
     {
-        //Debug.Log(inventory.Count.ToString());
+        Debug.Log(inventory.Count.ToString());
         if (inventory.Count != 0)
         {
             int direction = 1;
@@ -127,22 +108,19 @@ public class InventoryManager : MonoBehaviour
             {
                 GameObject b = Instantiate(fryingpan, throwPosition, new Quaternion());
                 b.GetComponent<Rigidbody2D>().velocity = new Vector3(weaponThrowSpeedX * direction, weaponThrowSpeedY, 0);
-                b.GetComponent<RotatingFallingObject>().pickup = thrownIngredient;
 
             }
             else if (thrownIngredient == Pickup.RollingPin)
             {
                 GameObject b = Instantiate(rollingPin, throwPosition, new Quaternion());
                 b.GetComponent<Rigidbody2D>().velocity = new Vector3(weaponThrowSpeedX*direction, weaponThrowSpeedY, 0);
-                b.GetComponent<RotatingFallingObject>().setType(thrownIngredient);
-
             }
             else
             {
                 // Skapa Ingrediens throwable
-                GameObject b = Instantiate(ingredients[thrownIngredient], throwPosition, new Quaternion());
+                GameObject b = Instantiate(rollingPin, throwPosition, new Quaternion());
                 b.GetComponent<Rigidbody2D>().velocity = new Vector3(ingredientThrowSpeedX * direction, ingredientThrowSpeedY, 0);
-                b.GetComponent<RotatingFallingObject>().setType(thrownIngredient);
+
             }
             UIManager.RemoveItem(teamNumber);
 
@@ -166,7 +144,6 @@ public class InventoryManager : MonoBehaviour
 
         if (foundIngredients != null)
         {
-            string type = "";
             //Debug.Log("PICKUP ALMOST DONE!");
             if (foundIngredients.tag == "Ingridient")
             {
@@ -182,11 +159,11 @@ public class InventoryManager : MonoBehaviour
                 ingScript = foundIngredients.GetComponent<WeaponPrefabScript>();
                 type = ingScript.weaponType.ToString("g");
                 print("TYPEN ÄR " + ingScript.GetType());
-
             }
 
 
             // string ingType = ingScript.getIngridientTypeString();
+            string type = ingScript.ingredientType.ToString("g");
 
             Pickup newPickup;
             Enum.TryParse(type, out newPickup);
@@ -196,21 +173,10 @@ public class InventoryManager : MonoBehaviour
                 int pickupNumber = UnityEngine.Random.Range(1, 3);
                 FindObjectOfType<AudioManager>().Play("PickupIngredient" + pickupNumber.ToString("0"));
                 AddIngredient(newPickup);
-                if (foundIngredients.tag == "Ingridient")
-                {
-                    PickupIngredientScript ingScript;
-                    ingScript = foundIngredients.GetComponent<PickupIngredientScript>();
-                    ingScript.RemoveMe();
-                }
-                else if (foundIngredients.tag == "weapon")
-                {
-                    WeaponPrefabScript ingScript;
-                    ingScript = foundIngredients.GetComponent<WeaponPrefabScript>();
-                    ingScript.RemoveMe();
-                }
+                ingScript.RemoveMe();
             }
 
-            //Debug.Log(inventory.Count);
+            Debug.Log(inventory.Count);
 
         }
     }

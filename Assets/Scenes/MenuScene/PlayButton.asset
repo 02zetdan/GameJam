@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PlayButton
   m_EditorClassIdentifier: 
   colorMode: 3
-  topLeft: {r: 0.8862745, g: 0.05490193, b: 0.18293196, a: 1}
-  topRight: {r: 0.9433962, g: 0.031149892, b: 0.031149892, a: 1}
-  bottomLeft: {r: 0.8862746, g: 0.73333335, b: 0.054901965, a: 1}
+  topLeft: {r: 1, g: 0.25943398, b: 0.25943398, a: 1}
+  topRight: {r: 1, g: 0.11792451, b: 0.11792451, a: 1}
+  bottomLeft: {r: 0.990566, g: 0.7410347, b: 0.31305623, a: 1}
   bottomRight: {r: 0.85490197, g: 0.05490197, b: 0.062735066, a: 1}

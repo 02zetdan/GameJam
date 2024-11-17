@@ -1,0 +1,137 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5087655566114306001
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7875658064220919119}
+  - component: {fileID: 4634138803857259558}
+  m_Layer: 0
+  m_Name: AudioManagerMain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7875658064220919119
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087655566114306001}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 570.72375, y: 241.825, z: -1.4794265}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4634138803857259558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5087655566114306001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4d76a63208ccac4589e7731fbbd82fe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sounds:
+  - name: Background Music
+    loop: 1
+    clip: {fileID: 8300000, guid: d72b4c9f952370f4a85a91641b00d9f1, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+  - name: Intense Background Music
+    loop: 0
+    clip: {fileID: 8300000, guid: ce657d84ec40da644a34fc4f0e8b9d18, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+  - name: Post Match Music
+    loop: 1
+    clip: {fileID: 8300000, guid: 51c935e5eed3fa94eb7fe9a28db323ec, type: 3}
+    volume: 1
+    pitch: 1.02
+    source: {fileID: 0}
+  - name: Splash1
+    loop: 0
+    clip: {fileID: 8300000, guid: e4dc30ea5977fd047b6d1dd0cd2e4d11, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+  - name: Splash2
+    loop: 0
+    clip: {fileID: 8300000, guid: 146f79f33b4d36747bc7477394e8f47b, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+  - name: Splash3
+    loop: 0
+    clip: {fileID: 8300000, guid: b798891a3f943ae4c87d95813c2c59b3, type: 3}
+    volume: 1
+    pitch: 0
+    source: {fileID: 0}
+  - name: UpdateMarket
+    loop: 0
+    clip: {fileID: 8300000, guid: e598ccc3948521b4c97bcc2cdada2db1, type: 3}
+    volume: 1
+    pitch: 1.02
+    source: {fileID: 0}
+  - name: Drop1
+    loop: 0
+    clip: {fileID: 8300000, guid: 7595f11fcbac3b948ab6df8fca358146, type: 3}
+    volume: 1
+    pitch: 1.02
+    source: {fileID: 0}
+  - name: Drop2
+    loop: 0
+    clip: {fileID: 8300000, guid: 346c9747f7b3cf549b1460dca0195c69, type: 3}
+    volume: 1
+    pitch: 1.02
+    source: {fileID: 0}
+  - name: Jump1
+    loop: 0
+    clip: {fileID: 8300000, guid: 7663a5ba38a33ea4ab93fc7ab18b2b32, type: 3}
+    volume: 1
+    pitch: 1.02
+    source: {fileID: 0}
+  - name: Jump2
+    loop: 0
+    clip: {fileID: 8300000, guid: 8e2836e14985085499c7c1986849f1bc, type: 3}
+    volume: 1
+    pitch: 1.02
+    source: {fileID: 0}
+  - name: PickupIngredient1
+    loop: 0
+    clip: {fileID: 8300000, guid: 5430ee103d40e81438a931f7bc40ec9e, type: 3}
+    volume: 1
+    pitch: 1.02
+    source: {fileID: 0}
+  - name: PickupIngredient2
+    loop: 0
+    clip: {fileID: 8300000, guid: eb215cc54e0ac834cab0f342da75b845, type: 3}
+    volume: 1
+    pitch: 1.02
+    source: {fileID: 0}
+  - name: Finish
+    loop: 0
+    clip: {fileID: 8300000, guid: 51c935e5eed3fa94eb7fe9a28db323ec, type: 3}
+    volume: 1
+    pitch: 1.02
+    source: {fileID: 0}
+  - name: Walk
+    loop: 1
+    clip: {fileID: 8300000, guid: 71ff42360dd4180459ac602cdd524b86, type: 3}
+    volume: 1
+    pitch: 1.02
+    source: {fileID: 0}

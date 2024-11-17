@@ -108,6 +108,7 @@ public class InventoryManager : MonoBehaviour
                 // Skapa Ingrediens throwable
                 Instantiate(rollingPin, throwPosition, new Quaternion());
             }
+            UIManager.RemoveItem(teamNumber);
 
         }
     }

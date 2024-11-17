@@ -29,12 +29,12 @@ public class PickupIngredientScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sprites.Add("Carrot", Resources.Load<Sprite>("IngridientSprites/carrotSprite"));
-        sprites.Add("Potato", Resources.Load<Sprite>("IngridientSprites/potatoSprite"));
+        sprites.Add("Carrot", Resources.Load<Sprite>("IngredientSprites/carrotSprite"));
+        sprites.Add("Potato", Resources.Load<Sprite>("IngredientSprites/potatoSprite"));
 
-        sprites.Add("Onion", Resources.Load<Sprite>("IngridientSprites/onionSprite"));
-        sprites.Add("Steak", Resources.Load<Sprite>("IngridientSprites/steakSprite"));
-        sprites.Add("Mushroom", Resources.Load<Sprite>("IngridientSprites/mushroomSprite"));
+        sprites.Add("Onion", Resources.Load<Sprite>("IngredientSprites/onionSprite"));
+        sprites.Add("Steak", Resources.Load<Sprite>("IngredientSprites/steakSprite"));
+        sprites.Add("Mushroom", Resources.Load<Sprite>("IngredientSprites/mushroomSprite"));
         timeToBlink = orgTimeToBlink;
         sprite = GetComponent<SpriteRenderer>();
 

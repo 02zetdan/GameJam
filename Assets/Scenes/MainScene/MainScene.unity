@@ -9589,6 +9589,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1536535546558134815, guid: 6703b849750c28f419617b70933fe4a1, type: 3}
+      propertyPath: lengthInSec
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1536535546558134815, guid: 6703b849750c28f419617b70933fe4a1, type: 3}
+      propertyPath: moveWithTransform
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5893323866730236674, guid: 6703b849750c28f419617b70933fe4a1, type: 3}
       propertyPath: UIManager
       value: 

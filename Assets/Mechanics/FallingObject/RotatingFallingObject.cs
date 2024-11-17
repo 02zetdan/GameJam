@@ -8,6 +8,7 @@ public class RotatingFallingObject : MonoBehaviour
     public float rotationSpeed; // Speed of rotation in degrees per second
     private bool hasLanded = false;   // Flag to check if the square has landed
     private Rigidbody2D rb;
+    private Collider2D collider;
     public Vector2 force;
     bool applyforce = false;
     // Start is called before the first frame update
@@ -15,6 +16,7 @@ public class RotatingFallingObject : MonoBehaviour
     {
         rotationSpeed = 300f;
         rb = GetComponent<Rigidbody2D>();
+        collider = GetComponent<Collider2D>();
         force = new Vector2(6f, 2);
     }
     void Start()
@@ -47,6 +49,8 @@ public class RotatingFallingObject : MonoBehaviour
             hasLanded = true;
             rb.freezeRotation = true;
             rb.constraints = RigidbodyConstraints2D.FreezePosition | RigidbodyConstraints2D.FreezeRotation;
+            
         }
+        collider.enabled = false;
     }
 }

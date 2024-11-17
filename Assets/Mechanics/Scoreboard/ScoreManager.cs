@@ -24,6 +24,18 @@ public class ScoreManager : MonoBehaviour
             player2Score += pointMap[ingredient];
         }
     }
+
+    public void removePoint(int playerNumber) 
+    {
+        if (playerNumber == 1 && player1Score > 0) {
+            player1Score--;
+        }
+        else if (playerNumber == 2 && player2Score > 0) 
+        {
+            player2Score--;
+        }
+    }
+
     public void updatePointMap(Dictionary<string, int> newMarket)
     {
         pointMap = newMarket;

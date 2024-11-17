@@ -14,11 +14,11 @@ public class MarketManager : MonoBehaviour
 
     private void Awake()
     {
-        Market.Add("potato", 5);
-        Market.Add("carrot", 3);
-        Market.Add("onion", 2);
-        Market.Add("mushroom", 1);
-        Market.Add("steak", 1);
+        Market.Add("Potato", 5);
+        Market.Add("Carrot", 3);
+        Market.Add("Onion", 2);
+        Market.Add("Mushroom", 1);
+        Market.Add("Steak", 1);
         marketGraphics = transform.Find("MarketGraphics").gameObject;
         sendNewMarketGraphics();
     }

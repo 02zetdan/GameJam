@@ -29,6 +29,11 @@ public class cookingPotScript : MonoBehaviour
         //Implementera kod med poäng manager
     }
 
+    private void removePoint() 
+    {
+        scoreBoard.GetComponent<ScoreManager>().removePoint(owningPlayer);
+    }
+
     // Update is called once per frame
     void Update()
     {
@@ -43,6 +48,15 @@ public class cookingPotScript : MonoBehaviour
             int splashNumb = Random.Range(1, 4);
             string ingridientType = collision.gameObject.GetComponent<IngridentScript>().getIngredientTypeString();
             registerPoint(ingridientType);
+            collision.GetComponent<IngridentScript>().RemoveMe();
+            transform.Find("Splash").GetComponent<ParticleSystem>().Play();
+            audioManager.Play("Splash" + splashNumb.ToString("0"));
+        }
+        else if (tag == "weapon")
+        {
+            int splashNumb = Random.Range(1, 4);
+            string ingridientType = collision.gameObject.GetComponent<IngridentScript>().getIngredientTypeString();
+            removePoint();
             collision.GetComponent<IngridentScript>().RemoveMe();
             transform.Find("Splash").GetComponent<ParticleSystem>().Play();
             audioManager.Play("Splash" + splashNumb.ToString("0"));

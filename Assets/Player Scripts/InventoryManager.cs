@@ -61,7 +61,7 @@ public class InventoryManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.RightControl))
         {
             // Handle removal and get type of Ingredient
-            Debug.Log("PICKUP!");
+            //Debug.Log("PICKUP!");
             PickUpIngredient();
         }
         if (Input.GetKeyDown(KeyCode.LeftControl))
@@ -108,28 +108,29 @@ public class InventoryManager : MonoBehaviour
                 // Skapa Ingrediens throwable
                 Instantiate(rollingPin, throwPosition, new Quaternion());
             }
+            UIManager.RemoveItem(teamNumber);
 
         }
     }
 
     public void PickUpIngredient()
     {
-        Debug.Log("PICKUP2!");
+        //Debug.Log("PICKUP2!");
         Collider2D foundIngredients;
         if (!pmScript.IsFacingLeft())
         {
-            Debug.Log("PICKUP L!");
+            //Debug.Log("PICKUP L!");
             foundIngredients = Physics2D.OverlapCircle(transform.position + new Vector3(-0.5f, -0.5f, 0), 0.5f, ingredientLayer);
         }
         else
         {
-            Debug.Log("PICKUP R!");
+            //Debug.Log("PICKUP R!");
             foundIngredients = Physics2D.OverlapCircle(transform.position + new Vector3(0.5f, -0.5f, 0), 0.5f, ingredientLayer);
         }
 
         if (foundIngredients != null)
         {
-            Debug.Log("PICKUP ALMOST DONE!");
+            //Debug.Log("PICKUP ALMOST DONE!");
 
             ingScript = foundIngredients.GetComponent<PickupIngredientScript>();
 

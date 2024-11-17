@@ -18,12 +18,12 @@ public class frameScript : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        sprites.Add("carrot", Resources.Load<Sprite>("IngridientSprites/carrotSprite"));
-        sprites.Add("potato", Resources.Load<Sprite>("IngridientSprites/potatoSprite"));
+        sprites.Add("Carrot", Resources.Load<Sprite>("IngredientSprites/carrotSprite"));
+        sprites.Add("Potato", Resources.Load<Sprite>("IngredientSprites/potatoSprite"));
 
-        sprites.Add("onion", Resources.Load<Sprite>("IngridientSprites/onionSprite"));
-        sprites.Add("steak", Resources.Load<Sprite>("IngridientSprites/steakSprite"));
-        sprites.Add("mushroom", Resources.Load<Sprite>("IngridientSprites/mushroomSprite"));
+        sprites.Add("Onion", Resources.Load<Sprite>("IngredientSprites/onionSprite"));
+        sprites.Add("Steak", Resources.Load<Sprite>("IngredientSprites/steakSprite"));
+        sprites.Add("Mushroom", Resources.Load<Sprite>("IngredientSprites/mushroomSprite"));
 
 
         frames.Add(1, Resources.Load<Sprite>("Frames/stoneframe"));

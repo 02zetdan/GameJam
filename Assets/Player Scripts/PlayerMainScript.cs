@@ -27,6 +27,8 @@ public class PlayerMainScript : MonoBehaviour
     public LayerMask solidMask;
     public LayerMask emptyMask;
 
+    Animator animator;
+
     BoxCollider2D hb;
 
     public int teamNum = 1;
@@ -40,6 +42,7 @@ public class PlayerMainScript : MonoBehaviour
 
     void Start()
     {
+        animator = GetComponent<Animator>();
         walkingParticles = GetComponentInChildren<ParticleSystem>();
         hb = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
@@ -114,6 +117,8 @@ public class PlayerMainScript : MonoBehaviour
             Jump();
         }
 
+        animator.SetBool("isGrounded", isGrounded);
+        // animator.setFloat("xVelocity", )
         wasGrounded = isGrounded;
     }
     private void FixedUpdate()

@@ -158,12 +158,26 @@ public class InventoryManager : MonoBehaviour
 
         if (foundIngredients != null)
         {
+            string type = "";
             //Debug.Log("PICKUP ALMOST DONE!");
+            if (foundIngredients.tag == "Ingridient")
+            {
+                PickupIngredientScript ingScript;
+                ingScript = foundIngredients.GetComponent<PickupIngredientScript>();
+                type = ingScript.ingredientType.ToString("g");
+                print("TYPEN ÄR " + ingScript.GetType());
 
-            ingScript = foundIngredients.GetComponent<PickupIngredientScript>();
+            }
+            else if(foundIngredients.tag == "weapon")
+            {
+                WeaponPrefabScript ingScript;
+                ingScript = foundIngredients.GetComponent<WeaponPrefabScript>();
+                type = ingScript.weaponType.ToString("g");
+                print("TYPEN ÄR " + ingScript.GetType());
+            }
+
 
             // string ingType = ingScript.getIngridientTypeString();
-            string type = ingScript.ingredientType.ToString("g");
 
             Pickup newPickup;
             Enum.TryParse(type, out newPickup);

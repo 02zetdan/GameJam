@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
@@ -10,6 +11,7 @@ public class PlayerMainScript : MonoBehaviour
     public float jumpForce = 10f;
     public float movementSpeed = 5f;
     public float moveInput = 0;
+    float dropFromLevel = 0;
 
     public bool isGrounded = false;
     public bool isPhasing = false;
@@ -20,6 +22,7 @@ public class PlayerMainScript : MonoBehaviour
 
     public LayerMask groundMask;
     public LayerMask softBlockMask;
+    public LayerMask softPlayerBlockMask;
     public LayerMask solidMask;
     public LayerMask emptyMask;
 
@@ -31,11 +34,27 @@ public class PlayerMainScript : MonoBehaviour
 
     ParticleSystem walkingParticles;
 
+    KeyCode dropButton;
+    KeyCode jumpButton;
+
     void Start()
     {
         walkingParticles = GetComponentInChildren<ParticleSystem>();
         hb = GetComponent<BoxCollider2D>();
         rb = GetComponent<Rigidbody2D>();
+
+        if(teamNum == 1)
+        {
+            jumpButton = KeyCode.Joystick1Button0;
+            dropButton = KeyCode.Joystick1Button1;
+        }
+        else if (teamNum == 2)
+        {
+            jumpButton = KeyCode.Joystick2Button0;
+            dropButton = KeyCode.Joystick2Button1;
+        }
+
+
     }
 
     // Update is called once per frame
@@ -52,72 +71,44 @@ public class PlayerMainScript : MonoBehaviour
         if (isWalking == true)
         {
             walkingParticles.Play();
-
         }
         else 
         {
             walkingParticles.Stop();
         }
 
-        if ((isPhasing == true) && (isGrounded == true) && (wasGrounded != true) && (isJumping == false))
+        if(rb.velocity.y > 0.1f)
         {
-            if (partiallyPhased == true)
+            hb.excludeLayers = softPlayerBlockMask;
+        }
+        else if((rb.velocity.y < 0.1f) && (rb.velocity.y > -0.1f) && (isPhasing == false))
+        {
+            hb.excludeLayers = emptyMask;
+        }
+
+        if (isPhasing == true)
+        {
+            if (Math.Abs(dropFromLevel - transform.position.y) > 3)
             {
-                //Debug.Log(
-                //    "Is Grounded: " + isGrounded +
-                //    "Was Grounded: " + wasGrounded
-                //);
                 isPhasing = false;
                 hb.excludeLayers = emptyMask;
-                partiallyPhased = false;
-            }
-            else
-            {
-                partiallyPhased = true;
-            }
-        }
-        else if ((isJumping == true) && (isPhasing == false))
-        {   
-            if (Physics2D.OverlapCircle(transform.position + new Vector3(0, 0.6f, 0), 0.1f, solidMask))
-            {
-                isJumping = false;
-            }
-            if (Physics2D.OverlapCircle(transform.position + new Vector3(0, 0.7f, 0), 0.1f, softBlockMask) && (isPhasing == false))
-            {
-                isPhasing = true;
-                hb.excludeLayers = softBlockMask;
-            }
-        }
-        else if((isPhasing == true) && (isGrounded == true) && (wasGrounded != true) && (isJumping == true))
-        {
-            if (partiallyPhased == true)
-            {
-                //Debug.Log(
-                //    "Is Grounded: " + isGrounded +
-                //    "Was Grounded: " + wasGrounded
-                //);
-                isPhasing = false;
-                hb.excludeLayers = emptyMask;
-                partiallyPhased = false;
-                isJumping = false;
-            }
-            else
-            {
-                partiallyPhased = true;
             }
         }
 
-        if (Input.GetButtonDown("DropP"+teamNum) && Physics2D.OverlapCircle(transform.position - new Vector3(0, 1, 0), 0.1f, softBlockMask) && (isJumping == false) && (isPhasing == false) && (partiallyPhased == false))
+        if (Input.GetKeyDown(dropButton) && Physics2D.OverlapCircle(transform.position - new Vector3(0, 1, 0), 0.1f, softBlockMask) && (isJumping == false) && (isPhasing == false) && (partiallyPhased == false))
         {
             transform.position = new Vector3(transform.position.x, transform.position.y - 0.01f, transform.position.z);
-            hb.excludeLayers = softBlockMask;
+            hb.excludeLayers = softPlayerBlockMask;
             isPhasing = true;
-            partiallyPhased = false;
-            int dropNumber = Random.Range(1, 3);
+            dropFromLevel = transform.position.y;
+
+            int dropNumber = UnityEngine.Random.Range(1, 3);
             FindObjectOfType<AudioManager>().Play("Drop" + dropNumber.ToString("0")); //QQQQQ
         }
-        if (Input.GetButtonDown("JumpP"+teamNum) && (isGrounded == true) && (isPhasing == false) && (partiallyPhased == false))
+        if (Input.GetKeyDown(jumpButton) && (isGrounded == true) && (isPhasing == false) && (partiallyPhased == false))
         {
+            Debug.Log("Player Team Num: " + teamNum);
+            Debug.Log(jumpButton);
             //Debug.Log("Jump!");
             Jump();
         }
@@ -134,9 +125,9 @@ public class PlayerMainScript : MonoBehaviour
     {
         rb.velocity = new Vector2(rb.velocity.x, 0);
         rb.AddForce(Vector2.up * jumpForce, ForceMode2D.Impulse);
-        int jumpNumber = Random.Range(1, 3);
+        int jumpNumber = UnityEngine.Random.Range(1, 3);
         FindObjectOfType<AudioManager>().Play("Jump" + jumpNumber.ToString("0")); //QQQQQ
-        isJumping = true;
+        // isJumping = true;
     }
 
     void Move()
@@ -194,7 +185,6 @@ public class PlayerMainScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, 0.6f, 0), 0.3f, groundMask);
-        Debug.Log(collisions.Length);
         if (collisions.Length > 1)
         {
             isJumping = false;

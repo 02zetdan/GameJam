@@ -46,18 +46,18 @@ public class cookingPotScript : MonoBehaviour
         if (tag == "Ingridient")
         {
             int splashNumb = Random.Range(1, 4);
-            string ingridientType = collision.gameObject.GetComponent<IngridentScript>().getIngredientTypeString();
+            string ingridientType = collision.gameObject.GetComponent<RotatingFallingObject>().GetTypeString();
             registerPoint(ingridientType);
-            collision.GetComponent<IngridentScript>().RemoveMe();
+            collision.GetComponent<RotatingFallingObject>().RemoveMe();
             transform.Find("Splash").GetComponent<ParticleSystem>().Play();
             audioManager.Play("Splash" + splashNumb.ToString("0"));
         }
         else if (tag == "weapon")
         {
             int splashNumb = Random.Range(1, 4);
-            string ingridientType = collision.gameObject.GetComponent<IngridentScript>().getIngredientTypeString();
+            string ingridientType = collision.gameObject.GetComponent<RotatingFallingObject>().GetTypeString();
             removePoint();
-            collision.GetComponent<IngridentScript>().RemoveMe();
+            collision.GetComponent<RotatingFallingObject>().RemoveMe();
             transform.Find("Splash").GetComponent<ParticleSystem>().Play();
             audioManager.Play("Splash" + splashNumb.ToString("0"));
         }

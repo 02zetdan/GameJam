@@ -144,6 +144,7 @@ public class InventoryManager : MonoBehaviour
 
         if (foundIngredients != null)
         {
+            string type = "";
             //Debug.Log("PICKUP ALMOST DONE!");
             if (foundIngredients.tag == "Ingridient")
             {
@@ -163,7 +164,6 @@ public class InventoryManager : MonoBehaviour
 
 
             // string ingType = ingScript.getIngridientTypeString();
-            string type = ingScript.ingredientType.ToString("g");
 
             Pickup newPickup;
             Enum.TryParse(type, out newPickup);

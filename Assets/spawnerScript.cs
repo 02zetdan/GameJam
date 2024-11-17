@@ -8,7 +8,7 @@ public class spawnerScript : MonoBehaviour
         min_x = 1,
         max_x = 4;
 
-    public GameObject ingredientPrefab;
+    public GameObject objectPrefab;
     // Start is called before the first frame update
     void Start()
     {
@@ -21,10 +21,10 @@ public class spawnerScript : MonoBehaviour
         
     }
 
-    public void SpawnIngredient()
+    public void SpawnObject()
     {
         int direction = Random.Range(0, 1);
         float distance = (1-2*direction)*Random.Range(0, max_x);
-        GameObject ingredient = Instantiate(ingredientPrefab, new Vector2(transform.position.x + distance, transform.position.y), Quaternion.identity);
+        GameObject ingredient = Instantiate(objectPrefab, new Vector2(transform.position.x + distance, transform.position.y), Quaternion.identity);
     }
 }

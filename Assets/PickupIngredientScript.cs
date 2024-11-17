@@ -48,7 +48,7 @@ public class PickupIngredientScript : MonoBehaviour
     }
 
 
-    public string getIngridientTypeString()
+    public string getIngredientTypeString()
     {
         return ingredientType.ToString("g");
     }

@@ -27,11 +27,11 @@ public class frameScript : MonoBehaviour
 
 
         frames.Add(1, Resources.Load<Sprite>("Frames/stoneframe"));
-        frames.Add(2, Resources.Load<Sprite>("Frames/stoneframe"));
+        frames.Add(2, Resources.Load<Sprite>("Frames/bronzeframe"));
 
-        frames.Add(3, Resources.Load<Sprite>("Frames/stoneframe"));
-        frames.Add(4, Resources.Load<Sprite>("Frames/stoneframe"));
-        frames.Add(5, Resources.Load<Sprite>("Frames/stoneframe"));
+        frames.Add(3, Resources.Load<Sprite>("Frames/silverframe"));
+        frames.Add(4, Resources.Load<Sprite>("Frames/goldframe"));
+        frames.Add(5, Resources.Load<Sprite>("Frames/platinaframe"));
 
         frame = GetComponent<Image>();
         frame.sprite = frames[value];

@@ -47,6 +47,7 @@ public class AudioManager : MonoBehaviour
     private void Start()
     {
         Play("Background Music");
+        Play("Timer");
     }
     private Sound FindSound(string name)
     {
@@ -69,6 +70,7 @@ public class AudioManager : MonoBehaviour
             Debug.LogWarning("Sound: " + name + " not found!");
             return;
         }
+        Debug.Log("Playing Sound: " + name);
         foundSound.source.Play();
     }
     public void Stop(string name) 

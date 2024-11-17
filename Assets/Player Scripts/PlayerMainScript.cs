@@ -118,7 +118,7 @@ public class PlayerMainScript : MonoBehaviour
         }
 
         animator.SetBool("isGrounded", isGrounded);
-        // animator.setFloat("xVelocity", )
+        animator.SetFloat("xVelocity", moveInput);
         wasGrounded = isGrounded;
     }
     private void FixedUpdate()

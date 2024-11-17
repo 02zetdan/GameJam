@@ -13,6 +13,7 @@ public class CountdownTimer : MonoBehaviour
     public float startTime;
     private float currentTime;
     private bool hasMusicChanged = false;
+    private bool hasFinished = false;
 
     void Start()
     {
@@ -44,8 +45,11 @@ public class CountdownTimer : MonoBehaviour
     private void OnTimerEnd()
     {
         FindObjectOfType<AudioManager>().Stop("Intense Background Music");
-        FindObjectOfType<AudioManager>().Play("Finish");
-        //FindObjectOfType<AudioManager>().Play("Finish");
+        if (!hasFinished)
+        {
+            FindObjectOfType<AudioManager>().Play("Finish");
+            hasFinished = true;
+        }
         endResultManager.GetComponent<EndResultManager>().showWinner();
         FindObjectOfType<AudioManager>().Stop("Intense Background Music");
         FindObjectOfType<AudioManager>().Stop("Timer");

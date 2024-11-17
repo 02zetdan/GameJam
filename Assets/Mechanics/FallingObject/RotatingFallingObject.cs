@@ -11,6 +11,7 @@ public class RotatingFallingObject : MonoBehaviour
     private Collider2D collider;
     public Vector2 force;
     bool applyforce = false;
+    public Pickup pickup;
     // Start is called before the first frame update
     private void Awake()
     {
@@ -23,7 +24,7 @@ public class RotatingFallingObject : MonoBehaviour
     {
         
         rb = GetComponent<Rigidbody2D>();
-        ApplyForce();
+        //ApplyForce();
     }
 
     // Update is called once per frame
@@ -40,9 +41,24 @@ public class RotatingFallingObject : MonoBehaviour
     {
         rb.AddForce(force, ForceMode2D.Impulse);
     }
+
+    public void setType(Pickup type)
+    {
+        pickup = type;
+    }
+
+    public void RemoveMe()
+    {
+        Destroy(gameObject);
+    }
+
+    public string GetTypeString()
+    {
+        return pickup.ToString("g");
+    }
     private void OnCollisionStay2D(Collision2D collision)
     {
-        Debug.Log("Collision detected");
+        //Debug.Log("Collision detected");
         print(collision.gameObject.name);
         if (collision.gameObject.CompareTag("Ground"))
         {

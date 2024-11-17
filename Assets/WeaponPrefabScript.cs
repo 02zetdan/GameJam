@@ -2,14 +2,11 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using static UnityEngine.Rendering.DebugUI;
 
 public class WeaponPrefabScript : MonoBehaviour
 {
-    public enum WeaponType
-    {
-        FryingPan,
-        RollingPin
-    }
+
     // Start is called before the first frame update
     private float despawnTimer = 0, timeToDespawn = 5;
 
@@ -19,21 +16,27 @@ public class WeaponPrefabScript : MonoBehaviour
 
     private float sinFactor = 0.5f, sinSpeed = 5f;
 
-    public WeaponType weaponType;
+    public Pickup weaponType;
 
     private SpriteRenderer sprite;
 
     void Start()
     {
-        sprites.Add("FryingPan", Resources.Load<Sprite>("WeaponSprites/rollingPinSprite"));
-        sprites.Add("RollingPin", Resources.Load<Sprite>("WeaponSprites/fryingPanSprite"));
+        sprites.Add("FryingPan", Resources.Load<Sprite>("WeaponSprites/fryingPanSprite"));
+        sprites.Add("RollingPin", Resources.Load<Sprite>("WeaponSprites/rollingPinSprite"));
 
         timeToBlink = orgTimeToBlink;
         sprite = GetComponent<SpriteRenderer>();
 
-        Array values = Enum.GetValues(typeof(WeaponType));
-        System.Random random = new System.Random();
-        weaponType = (WeaponType)values.GetValue(random.Next(values.Length));
+        int random = UnityEngine.Random.Range(0, 2);
+        if (random == 0)
+        {
+            weaponType = Pickup.FryingPan;
+        }
+        else 
+        {
+            weaponType = Pickup.RollingPin;
+        }
 
         sprite.sprite = sprites[weaponType.ToString("g")];
     }

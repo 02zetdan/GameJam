@@ -24,8 +24,7 @@ public class MarketManager : MonoBehaviour
     }
     void Start()
     {
-
-       
+        
     }
 
     private void sendNewMarketGraphics()

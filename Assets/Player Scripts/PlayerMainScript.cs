@@ -194,7 +194,7 @@ public class PlayerMainScript : MonoBehaviour
     private void OnCollisionEnter2D(Collision2D collision)
     {
         Collider2D[] collisions = Physics2D.OverlapCircleAll(transform.position + new Vector3(0, 0.6f, 0), 0.3f, groundMask);
-        Debug.Log(collisions.Length);
+        //Debug.Log(collisions.Length);
         if (collisions.Length > 1)
         {
             isJumping = false;

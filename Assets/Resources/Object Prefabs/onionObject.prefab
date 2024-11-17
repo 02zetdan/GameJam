@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7271442982566094185}
   m_Layer: 0
   m_Name: onionObject
-  m_TagString: Untagged
+  m_TagString: Ingridient
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -75,7 +75,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: 53ee44d8812f55c4d82daec8cfa2afd3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

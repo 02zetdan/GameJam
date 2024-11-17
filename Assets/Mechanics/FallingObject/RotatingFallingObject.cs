@@ -40,8 +40,10 @@ public class RotatingFallingObject : MonoBehaviour
     {
         rb.AddForce(force, ForceMode2D.Impulse);
     }
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnCollisionStay2D(Collision2D collision)
     {
+        Debug.Log("Collision detected");
+        print(collision.gameObject.name);
         if (collision.gameObject.CompareTag("Ground"))
         {
             Debug.Log("Ground hit");

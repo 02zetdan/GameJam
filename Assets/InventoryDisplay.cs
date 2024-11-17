@@ -10,7 +10,9 @@ public class InventoryDisplay : MonoBehaviour
     // Start is called before the first frame update
     List<Pickup> items = new List<Pickup>();
 
-    float itemSpace = 64, itemGap = 8;
+    float itemSpace = 32, itemGap = 8;
+
+    float itemScale = 0.25f;
 
     public GameObject boxPrefab;
 
@@ -25,7 +27,6 @@ public class InventoryDisplay : MonoBehaviour
         items.Add(element);
         boxes[currentElement].GetComponent<Image>().enabled = true;
         boxes[currentElement].GetComponent<Image>().sprite = sprites[element];
-        print("ELEMENTET SOM ÄR GIVET ÄR: " + element.ToString("g"));
         currentElement++;
     }
 
@@ -46,6 +47,7 @@ public class InventoryDisplay : MonoBehaviour
         {
             GameObject b = Instantiate(boxPrefab, parent: transform, position: new Vector3(0, shift, 0), rotation: Quaternion.identity);
             b.transform.localPosition = new Vector3(0, shift, 0);
+            b.transform.localScale = new Vector3(itemScale, itemScale, 0);
             boxes.Add(b);
             shift -= itemGap + itemSpace;
         }
@@ -53,12 +55,12 @@ public class InventoryDisplay : MonoBehaviour
 
     void Start()
     {
-        sprites.Add(Pickup.Carrot, Resources.Load<Sprite>("IngridientSprites/carrotSprite"));
-        sprites.Add(Pickup.Potato, Resources.Load<Sprite>("IngridientSprites/potatoSprite"));
+        sprites.Add(Pickup.Carrot, Resources.Load<Sprite>("IngredientSprites/carrotSprite"));
+        sprites.Add(Pickup.Potato, Resources.Load<Sprite>("IngredientSprites/potatoSprite"));
 
-        sprites.Add(Pickup.Onion, Resources.Load<Sprite>("IngridientSprites/onionSprite"));
-        sprites.Add(Pickup.Steak, Resources.Load<Sprite>("IngridientSprites/steakSprite"));
-        sprites.Add(Pickup.Mushroom, Resources.Load<Sprite>("IngridientSprites/mushroomSprite"));
+        sprites.Add(Pickup.Onion, Resources.Load<Sprite>("IngredientSprites/onionSprite"));
+        sprites.Add(Pickup.Steak, Resources.Load<Sprite>("IngredientSprites/steakSprite"));
+        sprites.Add(Pickup.Mushroom, Resources.Load<Sprite>("IngredientSprites/mushroomSprite"));
         sprites.Add(Pickup.FryingPan, Resources.Load<Sprite>("WeaponSprites/fryingPanSprite"));
         sprites.Add(Pickup.RollingPin, Resources.Load<Sprite>("WeaponSprites/rollingPinSprite"));
 

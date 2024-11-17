@@ -8,6 +8,7 @@ TagManager:
   - Spawner
   - Ingridient
   - SoftBlock
+  - weapon
   layers:
   - Default
   - TransparentFX

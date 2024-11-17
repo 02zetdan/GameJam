@@ -43,10 +43,10 @@ public class PlayerMainScript : MonoBehaviour
         {
             if (partiallyPhased == true)
             {
-                Debug.Log(
-                    "Is Grounded: " + isGrounded +
-                    "Was Grounded: " + wasGrounded
-                );
+                //Debug.Log(
+                //    "Is Grounded: " + isGrounded +
+                //    "Was Grounded: " + wasGrounded
+                //);
                 isPhasing = false;
                 hb.excludeLayers = emptyMask;
                 partiallyPhased = false;
@@ -98,7 +98,7 @@ public class PlayerMainScript : MonoBehaviour
         }
         if (Input.GetKeyDown(KeyCode.UpArrow) && (isGrounded == true) && (isPhasing == false) && (partiallyPhased == false))
         {
-            Debug.Log("Jump!");
+            //Debug.Log("Jump!");
             Jump();
         }
 

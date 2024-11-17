@@ -45,8 +45,9 @@ public class InventoryDisplay : MonoBehaviour
         for (int i = 0; i < 5; i++) 
         {
             GameObject b = Instantiate(boxPrefab, parent: transform, position: new Vector3(0, shift, 0), rotation: Quaternion.identity);
+            b.transform.localPosition = new Vector3(0, shift, 0);
             boxes.Add(b);
-            shift += itemGap + itemSpace;
+            shift -= itemGap + itemSpace;
         }
     }
 

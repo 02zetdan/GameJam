@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 9137266409422386051}
   - component: {fileID: 5096905482866386967}
   - component: {fileID: 5893323866730236674}
+  - component: {fileID: 7367061222324614659}
   m_Layer: 8
   m_Name: Player
   m_TagString: Player
@@ -35,7 +36,7 @@ Transform:
   m_Children:
   - {fileID: 4580371163189791743}
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &8399606653979277120
 MonoBehaviour:
@@ -58,6 +59,7 @@ MonoBehaviour:
   partiallyPhased: 0
   wasGrounded: 0
   isJumping: 0
+  isStunned: 0
   groundMask:
     serializedVersion: 2
     m_Bits: 72
@@ -66,14 +68,14 @@ MonoBehaviour:
     m_Bits: 64
   softPlayerBlockMask:
     serializedVersion: 2
-    m_Bits: 320
+    m_Bits: 64
   solidMask:
     serializedVersion: 2
     m_Bits: 8
   emptyMask:
     serializedVersion: 2
-    m_Bits: 256
-  teamNum: 2
+    m_Bits: 0
+  teamNum: 1
 --- !u!212 &3680621013055568092
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -217,6 +219,19 @@ MonoBehaviour:
   UIManager: {fileID: 0}
   fryingpan: {fileID: 4454495395491519153, guid: 0f5f7100197faed4fb334adbf1339804, type: 3}
   rollingPin: {fileID: 3901114740106016618, guid: 4ef2b7a40c4157f47b06e9f633ee3639, type: 3}
+--- !u!114 &7367061222324614659
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8398626400227949951}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61247aa491b72cd428a41ef297faa5cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  AudioManager: {fileID: 0}
 --- !u!1001 &1022764200126854255
 PrefabInstance:
   m_ObjectHideFlags: 0
